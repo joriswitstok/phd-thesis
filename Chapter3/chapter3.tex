@@ -1,0 +1,79 @@
+%!TEX root = ../thesis.tex
+%*******************************************************************************
+%******************************** Chapter 3 ************************************
+%*******************************************************************************
+
+\chapter{ALMA}
+\label{ch:ALMA}
+
+\subsection{Dust \texorpdfstring{\glsentryshort{SED}}{SED} fitting procedure}
+\label{ssec:Discussion: Dust SED fitting procedure}
+
+For COS-3018555981 and UVISTA-Z-019, the detection at $\ssim 160 \, \mathrm{\upmu m}$ combined with an upper limit at $\ssim 90 \, \mathrm{\upmu m}$ can provide insight into the dust properties beyond those derived with a fixed temperature, emissivity, and opacity model. To investigate this in detail, we performed an \gls{MCMC} fitting routine using the \program{emcee} package in \program{python} described in the following.
+
+Radiative transfer predicts the intensity emerging from a region of dust at a temperature $T_\text{dust}$ becomes a modified black body \citep[often referred to as a greybody;][]{2020MNRAS.498.4109J},
+\begin{equation}
+    \label{eq:Dust radiative transfer}
+    J_\nu = \left( 1 - e^{-\tau (\nu)} \right) B_\nu \left( T_\text{dust} \right),
+\end{equation}
+
+\noindent where $B_\nu$ is the Planck function \citep{1901AnP...309..553P}, a specific intensity in units of $\mathrm{erg \, s^{-1} \, cm^{-2} \, sr^{-1} \, Hz^{-1}}$ that is attenuated by the opacity term containing the optical depth, $\tau (\nu)$. 
+%The specific luminosity $L_\nu$ (over an infinitesimal frequency range $\dif \nu$) can be obtained by integrating over the area of the region $A$ and solid angle into which the source radiates (i.e. $4 \pi$ for isotropic emission). For a cosmologically distant source, the observed flux is related to its luminosity via $F = L / 4 \pi d_L^2(z)$, where $d_L(z)$ is the luminosity distance at the source's redshift $z$. 
+The flux density observed at $\nu_\text{obs} = \nu / (1+z)$, denoted $S_{\nu\text{, obs}}$ (in $\mathrm{erg \, s^{-1} \, cm^{-2} \, Hz^{-1}}$) is then found through\footnote{We note that in quantities related to the emission process (such as $\kappa_\nu$ or $B_\nu$), $\nu$ represents the rest-frame frequency, whereas for the observable quantity $S_{\nu\text{, obs}}$ -- the flux density in the observer's frame -- $\nu$ implicitly stands for the observed frequency.}
+\begin{align*}
+    S_{\nu\text{, obs}} \dif \nu_\text{obs} & = S_\nu \dif \nu = F = \frac{L_\nu \dif \nu}{4 \pi d_L^2(z)}
+    \\
+    & = \frac{A}{4 \pi d_L^2(z)} \left( 1 - e^{-\tau (\nu)} \right) 4 \pi B_\nu \left( T_\text{dust} \right) \dif \nu.
+\end{align*}
+
+\rs{[what does A stand for?Do we need this equation or could we go straight to equation 3 and refer to e.g. Jones+2020?]} At high redshift, however, the observed flux needs to be corrected for the effect of observing against the isotropic \gls{CMB}, which involves subtracting the Planck function for $T_\text{\gls{CMB}} (z)$, the \gls{CMB} temperature at redshift $z$, from the dust blackbody term \citep[as in equation (18) in][]{2013ApJ...766...13D}. Further inserting the angular diameter distance $d_A(z)$ defined via the solid angle subtended by the source, $\Omega = A / d_A^2(z)$, and making use of the relation $d_L = \left( 1+z \right)^2 d_A$ \citep{1999astro.ph..5116H}, we arrive at the general form of the observed \gls{SED} \citep[see also][]{2020MNRAS.498.4109J},
+\begin{equation}
+    \label{eq:General dust SED flux density}
+    S_{\nu\text{, obs}} = \frac{\Omega}{\left( 1+z \right)^3} \left( 1 - e^{-\tau (\nu)} \right) \left[ B_\nu \left(T_\text{dust} \right) - B_\nu \left(T_\text{\gls{CMB}} (z) \right) \right].
+\end{equation}
+
+In the general opacity model, the optical depth is taken to be proportional to the dust mass surface density $\Sigma_\text{dust}$ \citep{2014PhR...541...45C} via
+\begin{equation}
+    \label{eq:Dust mass absorption coefficient definition}
+    \tau (\nu) \equiv \kappa_\nu \, \Sigma_\text{dust},
+\end{equation}
+
+where the dust mass absorption coefficient, $\kappa_\nu$, is the frequency-dependent constant of proportionality. This frequency dependence is parametrised via a power law with the dust emissivity $\beta_\text{\gls{IR}}$ as its exponent \citep{2006ApJ...636.1114D},
+\begin{equation}
+    \label{eq:Dust mass absorption coefficient form}
+    \kappa_\nu = \kappa_{\nu, 0} \left( \frac{\nu}{\nu_0^\prime} \right)^{\beta_\text{\gls{IR}}}.
+\end{equation}
+
+\rs{[I don't understand the use of ' here?]} Following \citet{2021arXiv210512133S}, we used $\kappa_{\nu, 0} = 8.94 \, \mathrm{cm^2 \, g^{-1}}$ at $\lambda_0^\prime = 158 \, \mathrm{\upmu m}$ (i.e. $\nu_0^\prime = \nu_\CII \simeq 1.90 \, \mathrm{THz}$), appropriate for dust ejected by \glspl{SN} after reverse shock destruction \citep{2014MNRAS.443.1704H}. As will be discussed in \cref{ssec:Discussion: Dust masses}, \glspl{SN} are the most likely source of dust in these young, metal-poor star-forming galaxies. However, since the detailed dust composition is in principle unknown, there is a systematic uncertainty that can lower dust masses by a factor $\ssim 3$ or increase them by a factor $\ssim 1.5$.
+
+Given \cref{eq:Dust mass absorption coefficient form}, the optical depth can be expressed in the form
+\begin{equation}
+    \label{eq:Optical depth}
+    \tau (\nu) = \left( \frac{\nu}{\nu_0} \right)^{\beta_\text{\gls{IR}}} = \left( \frac{\lambda_0}{\lambda} \right)^{\beta_\text{\gls{IR}}},
+\end{equation}
+
+\noindent \rs{[I don't understand what happened to $\Sigma_{dust}$? how does this follow from the previous equation?]} which clearly marks the point at which the dust transitions from optically thin to thick, at $\lambda_0 = c/\nu_0$. For \glspl{LBG} at high redshift, $\lambda_0$ is typically assumed to be well below the sampled wavelength regime so that it is safe to approximate the entire \gls{SED} as being optically thin \citep[$\tau (\nu) \ll 1$; e.g.][]{2021MNRAS.508L..58B} which simply reduces \cref{eq:General dust SED flux density} to \citep{2014PhR...541...45C}
+\begin{equation}
+    \label{eq:OT dust SED flux density}
+    S_{\nu\text{, obs}} = M_\text{dust} \, \frac{1+z}{D_L^2 (z)} \, \kappa_\nu \left[ B_\nu \left(T_\text{dust} \right) - B_\nu \left(T_\text{\gls{CMB}} (z) \right) \right].
+\end{equation}
+
+\rs{[a lot of these derivations are very useful for e.g. your thesis, but might not be needed for this paper, would it be possible go from eq. 2 to eq. 7 in one step? then below the equation define eq. 5 in line and explaining you are taking the da Cunha et al. 2013 CMB correction into account]} However, this assumption can lead to a significantly underestimated dust temperature and overestimated dust mass if incorrectly applied on measurements that sample a region where the approximation does not hold \citep{2020A&A...634L..14C, 2020MNRAS.498.4109J}.\footnote{Together with the fact that the intrinsic dust temperature has a large impact on the derived dust masses at shorter wavelengths, this is why dust masses should ideally be inferred from the highest wavelengths ($\lambda_\text{emit} > 450 \, \mathrm{\upmu m}$; \citealt{2012MNRAS.425.3094C}).} For a fixed $\lambda_0$, an a posteriori consistency check on the assumed opacity model can be performed, since it follows from \cref{eq:Dust mass absorption coefficient definition,eq:Dust mass absorption coefficient form,eq:Optical depth} that
+\begin{equation}
+    \label{eq:Consistent l0}
+    \lambda_0 = \left( \kappa_{\nu, 0} \Sigma_\text{dust} \right)^{1/\beta_\text{\gls{IR}}} \lambda_0^\prime.
+\end{equation}
+
+We derived $\Sigma_\text{dust}$ from the dust mass by using $A_\text{dust}$ (given in \cref{tab:Continuum fluxes and dust properties}), the deconvolved size of the dust emission found by the \program{imfit} procedure in \gls{CASA} (e.g. \cref{fig:Dust continuum maps of COS-3018555981 and UVISTA-Z-019}), in the following relation:
+\begin{equation}
+    \label{eq:Dust mass surface density}
+    \Sigma_\text{dust} = C \, \frac{M_\text{dust}}{A_\text{dust}}.
+\end{equation}
+
+Here, $C$ is a clumping factor that throughout we assumed to be $C = 1$ as would be expected for a homogeneous distribution, while a clustered dust distribution (on scales below the resolution of interferometric observations) would result in $C > 1$. Alternatively, \cref{eq:Consistent l0,eq:Dust mass surface density} allow for a self-consistent framework where, given a dust mass, we infer $\lambda_0$ a priori, which we opted for as our fiducial opacity model \rs{[what is the updated $S_{\nu,obs}$ instead of eq. 7 you use now?]}.
+
+Under a set opacity model, we then used a freely varying dust temperature and logarithmic dust mass. As the number of free parameters should not exceed the number of constraints and different assumptions of $\lambda_0$ typically dominate over those of the dust emissivity \citep{2014PhR...541...45C}, we fixed the dust emissivity to $\beta_\text{\gls{IR}} = 1.5$, a choice we will motivate further in \cref{ssec:Discussion: Dust properties in this work}. Flat priors were assumed within the range $T_\text{\gls{CMB}}(z) < T_\text{dust} < 150 \, \mathrm{K}$ and $10^5 \, \mathrm{M_\odot} < M_\text{dust} < 10^{12} \, \mathrm{M_\odot}$. The model's predicted observed flux density at a given wavelength are compared with the actual observed flux densities and a likelihood is assigned based on the squared residuals between model and observations (weighted by the inverse variance). If the model greybody curve exceeds (falls below) the upper limits, the likelihood is lowered (increased) according to the significance of the discrepancy (agreement) following the formalism in \citet{2012PASP..124.1208S}.
+
+The full \glspl{SED} of the galaxies considered in this work are shown in \cref{fig:L_IR constraints}. For COS-2987030247 and UVISTA-Z-007, a range of dust temperatures ($30 \, \mathrm{K} \leq T_\text{dust} \leq 100 \, \mathrm{K}$) and emissivity parameters ($1.5 \leq \beta_\text{\gls{IR}} \leq 2.5$)\rs{[would it be more consistent to fix beta=1.5 here too??]} for templates that fit the constraints are considered instead of an \gls{MCMC} fit. These templates are created under an entirely optically thin opacity model (i.e. an \gls{SED} described by \cref{eq:OT dust SED flux density}), which is a valid assumption since their dust masses are too small to be confidently detected (as shown in \cref{tab:Continuum fluxes and dust properties}). As can be seen from these templates, the constraints cannot be used to deduce the best-fit parameters, which is why we report (an upper limit on) the (F)IR luminosity and other parameters with a fiducial temperature $T_\text{dust} = 50 \, \mathrm{K}$ and $\beta_\text{\gls{IR}} = 1.5$ (\cref{ssec:Results: Dust continuum}). From \cref{fig:L_IR constraints}, however, it can be seen the \gls{IR} luminosity can vary by more than an order magnitude between the most extreme choices of $T_\text{dust}$ and $\beta_\text{\gls{IR}}$. As described in \cref{ssec:Results: Dust continuum}, we take the systematic uncertainty resulting from fixing these parameters into account in our estimates of the (F)IR luminosity and obscured \gls{SFR}.
+
+For COS-3018555981 and UVISTA-Z-019, on the other hand, the \gls{MCMC} fitting routine described above is applied, fixing $\beta_\text{\gls{IR}} = 1.5$ but considering different assumptions on the opacity model: either an entirely optically thin \gls{SED} or the general opacity model, with $\lambda_0$ set self-consistently or fixed to an extreme $200 \, \mathrm{\upmu m}$.

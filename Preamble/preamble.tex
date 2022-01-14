@@ -1,0 +1,496 @@
+% ******************************************************************************
+% ****************************** Custom Margin *********************************
+
+% Add `custommargin' in the document class options to use this section
+% Set {innerside margin / outerside margin / topmargin / bottom margin}  and
+% other page dimensions
+\ifsetCustomMargin
+% ******************************* Joris' edit **********************************
+  %\RequirePackage[left=37mm,right=30mm,top=35mm,bottom=30mm]{geometry}
+  \RequirePackage[left=15mm,right=15mm,top=20mm,bottom=20mm]{geometry}
+  \setFancyHdr % To apply fancy header after geometry package is loaded
+\fi
+
+% Add spaces between paragraphs
+%\setlength{\parskip}{0.5em}
+% Ragged bottom avoids extra whitespaces between paragraphs
+\raggedbottom
+% To remove the excess top spacing for enumeration, list and description
+%\usepackage{enumitem}
+%\setlist[enumerate,itemize,description]{topsep=0em}
+
+% *****************************************************************************
+% ******************* Fonts (like different typewriter fonts etc.)*************
+
+% Add `customfont' in the document class option to use this section
+
+\ifsetCustomFont
+  % Set your custom font here and use `customfont' in options. Leave empty to
+  % load computer modern font (default LaTeX font).
+  %\RequirePackage{helvet}
+
+  % For use with XeLaTeX
+  %  \setmainfont[
+  %    Path              = ./libertine/opentype/,
+  %    Extension         = .otf,
+  %    UprightFont = LinLibertine_R,
+  %    BoldFont = LinLibertine_RZ, % Linux Libertine O Regular Semibold
+  %    ItalicFont = LinLibertine_RI,
+  %    BoldItalicFont = LinLibertine_RZI, % Linux Libertine O Regular Semibold Italic
+  %  ]
+  %  {libertine}
+  %  % load font from system font
+  %  \newfontfamily\libertinesystemfont{Linux Libertine O}
+\fi
+
+% *****************************************************************************
+% **************************** Custom Packages ********************************
+% ******************************* Joris' edit **********************************
+
+\newcommand{\program}{\textsc}
+\newcommand{\ssim}{\sim \!}
+
+\newcommand{\Isample}{\citeauthor{2016Natur.529..178I} sample}
+
+\newcommand{\lymana}{{Lyman-\ensuremath{\upalpha}}}
+\newcommand{\lymanatext}{Lyman-α}
+\newcommand{\lya}{{Ly\ensuremath{\upalpha}}}
+\newcommand{\lyatext}{Lyα}
+
+\newcommand{\HII}{{\ion{H}{II}}}
+\newcommand{\CIV}{{\ion{C}{IV}}}
+\newcommand{\HeII}{{\ion{He}{II}}}
+\newcommand{\OIIIf}{{[\ion{O}{III}]}}
+\newcommand{\OIIIs}{{\ion{O}{III}]}}
+\newcommand{\CIII}{{\ion{C}{III}}}
+\newcommand{\CIIIf}{{[\ion{C}{III}]}}
+\newcommand{\CIIIs}{{\ion{C}{III}]}}
+\newcommand{\MgII}{{\ion{Mg}{II}}}
+\newcommand{\OII}{{[\ion{O}{II}]}}
+\newcommand{\NeIII}{{[\ion{Ne}{III}]}}
+
+\newcommand{\Ha}{{H\ensuremath{\upalpha}}}
+\newcommand{\Hb}{{H\ensuremath{\upbeta}}}
+\newcommand{\NII}{{[\ion{N}{II}]}}
+\newcommand{\SII}{{[\ion{S}{II}]}}
+\newcommand{\OI}{{[\ion{O}{I}]}}
+
+\newcommand{\Angstrom}{\ensuremath{\AA}}
+
+\newcommand{\arcsec}{\hbox{$^{\prime\prime}$}}
+\newcommand{\ion}[2]{\textup{#1\,\textsc{\lowercase{#2}}}}
+
+\usepackage{commath}
+\usepackage{upgreek}
+
+\usepackage{ae,aecompl}
+\usepackage{xcolor}
+\usepackage{csvsimple}
+
+\RequirePackage{epigraph}
+%\RequirePackage{lettrine}
+%\RequirePackage[super]{nth}
+
+%\RequirePackage{titlesec}
+%\newcommand{\PreContentTitleFormat}{\titleformat{\chapter}[display]{\scshape\Large}
+%	{\Large\filleft{\chaptertitlename} \Huge\thechapter}
+%	{1ex}{}
+%	[\vspace{1ex}\titlerule]}
+%\newcommand{\ContentTitleFormat}{\titleformat{\chapter}[display]{\scshape\huge}
+%	{\Large\filleft{\chaptertitlename} \Huge\thechapter}{1ex}
+%	{\titlerule\vspace{1ex}\filright}
+%	[\vspace{1ex}\titlerule]}
+%\newcommand{\PostContentTitleFormat}{\PreContentTitleFormat}
+%\PreContentTitleFormat
+
+% ************************* Algorithms and Pseudocode **************************
+
+%\usepackage{algpseudocode}
+
+
+% ********************Captions and Hyperreferencing / URL **********************
+
+% Captions: This makes captions of figures use a boldfaced small font.
+%\RequirePackage[small,bf]{caption}
+
+% ******************************* Joris' edit **********************************
+%\RequirePackage[labelsep=space,tableposition=top]{caption}
+\RequirePackage[small, labelfont=bf, labelsep=space, tableposition=top]{caption}
+%\renewcommand{\figurename}{Fig.} %to support older versions of captions.sty
+\renewcommand{\figurename}{Figure}
+
+
+% *************************** Graphics and figures *****************************
+
+%\usepackage{rotating}
+%\usepackage{wrapfig}
+
+% Uncomment the following two lines to force Latex to place the figure.
+% Use [H] when including graphics. Note 'H' instead of 'h'
+\usepackage{float}
+\restylefloat{figure}
+
+% Subcaption package is also available in the sty folder you can use that by
+% uncommenting the following line
+% This is for people stuck with older versions of texlive
+%\usepackage{sty/caption/subcaption}
+\usepackage{subcaption}
+
+% ********************************** Tables ************************************
+\usepackage{booktabs} % For professional looking tables
+\usepackage{multirow}
+
+%\usepackage{multicol}
+%\usepackage{longtable}
+%\usepackage{tabularx}
+
+
+% *********************************** SI Units *********************************
+\usepackage{siunitx} % use this package module for SI units
+
+
+% ******************************* Line Spacing *********************************
+
+% Choose linespacing as appropriate. Default is one-half line spacing as per the
+% University guidelines
+
+% \doublespacing
+% \onehalfspacing
+\singlespacing
+
+
+% ************************ Formatting / Footnote *******************************
+
+% Don't break enumeration (etc.) across pages in an ugly manner (default 10000)
+%\clubpenalty=500
+%\widowpenalty=500
+
+%\usepackage[perpage]{footmisc} %Range of footnote options
+
+% ******************************* Joris' edit **********************************
+% (Custom: footnotes in tables)
+\usepackage{footnote}
+\makesavenoteenv{tabular}
+\makesavenoteenv{table}
+
+
+% *****************************************************************************
+% *************************** Bibliography  and References ********************
+
+% ******************************* Joris' edit **********************************
+% Allow "Thomas van Noord" and "Simon de Laguarde" and alike to be sorted by "N" and "L" etc. in the bibliography. Write the name in the bibliography as "author = {{\VAN{Noord}{Van}{van} Noord}, Thomas}"
+\DeclareRobustCommand{\VAN}[3]{#2}
+\let\VANthebibliography\thebibliography
+\def\thebibliography{\DeclareRobustCommand{\VAN}[3]{##3}\VANthebibliography}
+
+%\usepackage{cleveref} %Referencing without need to explicitly state fig /table
+\usepackage[capitalise]{cleveref} %noabbrev
+\crefname{figure}{Fig.}{Figs.}
+\crefname{section}{Sect.}{Sects.}
+
+%\bibpunct[]{(}{)}{;}{a}{}{,} % to follow the A&A style
+
+% Add `custombib' in the document class option to use this section
+\ifuseCustomBib
+   \RequirePackage[authoryear]{natbib} % CustomBib
+   %\RequirePackage[comma, sort&compress, authoryear]{natbib} % CustomBib
+   %\RequirePackage[comma, sort&compress, numbers]{natbib} % CustomBib
+   
+   %------------- Joris' edit (taken from MNRAS template) ----------------
+   
+   % Standard journal abbreviations
+   % Mostly as used by ADS, with a few additions for journals where MNRAS does not
+   % follow normal IAU style.
+   
+   \newcommand\aap{A\&A}                % Astronomy and Astrophysics
+   \let\astap=\aap                          % alternative shortcut
+   \newcommand\aapr{A\&ARv}             % Astronomy and Astrophysics Review (the)
+   \newcommand\aaps{A\&AS}              % Astronomy and Astrophysics Supplement Series
+   \newcommand\actaa{Acta Astron.}      % Acta Astronomica
+   \newcommand\afz{Afz}                 % Astrofizika
+   \newcommand\aj{AJ}                   % Astronomical Journal (the)
+   \newcommand\ao{Appl. Opt.}           % Applied Optics
+   \let\applopt=\ao                         % alternative shortcut
+   \newcommand\aplett{Astrophys.~Lett.} % Astrophysics Letters
+   \newcommand\apj{ApJ}                 % Astrophysical Journal
+   \newcommand\apjl{ApJ}                % Astrophysical Journal, Letters
+   \let\apjlett=\apjl                       % alternative shortcut
+   \newcommand\apjs{ApJS}               % Astrophysical Journal, Supplement
+   \let\apjsupp=\apjs                       % alternative shortcut
+   % The following journal does not appear to exist! Disabled.
+   %\newcommand\apspr{Astrophys.~Space~Phys.~Res.} % Astrophysics Space Physics Research
+   \newcommand\apss{Ap\&SS}             % Astrophysics and Space Science
+   \newcommand\araa{ARA\&A}             % Annual Review of Astronomy and Astrophysics
+   \newcommand\arep{Astron. Rep.}       % Astronomy Reports
+   \newcommand\aspc{ASP Conf. Ser.}     % ASP Conference Series
+   \newcommand\azh{Azh}                 % Astronomicheskii Zhurnal
+   \newcommand\baas{BAAS}               % Bulletin of the American Astronomical Society
+   \newcommand\bac{Bull. Astron. Inst. Czechoslovakia} % Bulletin of the Astronomical Institutes of Czechoslovakia 
+   \newcommand\bain{Bull. Astron. Inst. Netherlands} % Bulletin Astronomical Institute of the Netherlands
+   \newcommand\caa{Chinese Astron. Astrophys.} % Chinese Astronomy and Astrophysics
+   \newcommand\cjaa{Chinese J.~Astron. Astrophys.} % Chinese Journal of Astronomy and Astrophysics
+   \newcommand\fcp{Fundamentals Cosmic Phys.}  % Fundamentals of Cosmic Physics
+   \newcommand\gca{Geochimica Cosmochimica Acta}   % Geochimica Cosmochimica Acta
+   \newcommand\grl{Geophys. Res. Lett.} % Geophysics Research Letters
+   \newcommand\iaucirc{IAU~Circ.}       % IAU Cirulars
+   \newcommand\icarus{Icarus}           % Icarus
+   \newcommand\japa{J.~Astrophys. Astron.} % Journal of Astrophysics and Astronomy
+   \newcommand\jcap{J.~Cosmology Astropart. Phys.} % Journal of Cosmology and Astroparticle Physics
+   \newcommand\jcp{J.~Chem.~Phys.}      % Journal of Chemical Physics
+   \newcommand\jgr{J.~Geophys.~Res.}    % Journal of Geophysics Research
+   \newcommand\jqsrt{J.~Quant. Spectrosc. Radiative Transfer} % Journal of Quantitiative Spectroscopy and Radiative Transfer
+   \newcommand\jrasc{J.~R.~Astron. Soc. Canada} % Journal of the RAS of Canada
+   \newcommand\memras{Mem.~RAS}         % Memoirs of the RAS
+   \newcommand\memsai{Mem. Soc. Astron. Italiana} % Memoire della Societa Astronomica Italiana
+   \newcommand\mnassa{MNASSA}           % Monthly Notes of the Astronomical Society of Southern Africa
+   \newcommand\mnras{MNRAS}             % Monthly Notices of the Royal Astronomical Society
+   \newcommand\na{New~Astron.}          % New Astronomy
+   \newcommand\nar{New~Astron.~Rev.}    % New Astronomy Review
+   \newcommand\nat{Nature}              % Nature
+   \newcommand\nphysa{Nuclear Phys.~A}  % Nuclear Physics A
+   \newcommand\pra{Phys. Rev.~A}        % Physical Review A: General Physics
+   \newcommand\prb{Phys. Rev.~B}        % Physical Review B: Solid State
+   \newcommand\prc{Phys. Rev.~C}        % Physical Review C
+   \newcommand\prd{Phys. Rev.~D}        % Physical Review D
+   \newcommand\pre{Phys. Rev.~E}        % Physical Review E
+   \newcommand\prl{Phys. Rev.~Lett.}    % Physical Review Letters
+   \newcommand\pasa{Publ. Astron. Soc. Australia}  % Publications of the Astronomical Society of Australia
+   \newcommand\pasp{PASP}               % Publications of the Astronomical Society of the Pacific
+   \newcommand\pasj{PASJ}               % Publications of the Astronomical Society of Japan
+   \newcommand\physrep{Phys.~Rep.}      % Physics Reports
+   \newcommand\physscr{Phys.~Scr.}      % Physica Scripta
+   \newcommand\planss{Planet. Space~Sci.} % Planetary Space Science
+   \newcommand\procspie{Proc.~SPIE}     % Proceedings of the Society of Photo-Optical Instrumentation Engineers
+   \newcommand\rmxaa{Rev. Mex. Astron. Astrofis.} % Revista Mexicana de Astronomia y Astrofisica
+   \newcommand\qjras{QJRAS}             % Quarterly Journal of the RAS
+   \newcommand\sci{Science}             % Science
+   \newcommand\skytel{Sky \& Telesc.}   % Sky and Telescope
+   \newcommand\solphys{Sol.~Phys.}      % Solar Physics
+   \newcommand\sovast{Soviet~Ast.}      % Soviet Astronomy (aka Astronomy Reports)
+   \newcommand\ssr{Space Sci. Rev.}     % Space Science Reviews
+   \newcommand\zap{Z.~Astrophys.}       % Zeitschrift fuer Astrophysik
+   
+   %  ****************************************
+   %  *    COMMANDS FOR USE WITH MNRAS.BST    *
+   %  ****************************************
+   %
+   % The following three macros provide auxiliary support for the BibTeX
+   % wranglings in mnras.bst.  They provide support for functionality
+   % which it is impossible, or at least unmaintainably arcane, to
+   % provide within BibTeX Style Language.
+   %
+   % These definitions can be loaded as a package or, probably better,
+   % should be incorporated into a mnras.cls file.
+   %
+   % These depend on the presence of a \href{URL}{text} macro, as
+   % provided by the hyperref package.  The mnras.bst style depends
+   % additionally on the \url{URL} macro, which hyperref also provides.
+   %
+   % If the hyperref package is not included, then suitable defaults are
+   %
+   %   \def\href#1#2{#2}
+   %   \def\@url#1{#1\endgroup}
+   %   \def\url{\begingroup\@urlcharsother \ttfamily \@url}
+   %
+   % These must appear _after_ this package is loaded, and should appear
+   % _instead_ of loading the hyperref package (it'll probably be OK to
+   % let the hyperref package redefine these, but that is to tempt fate).
+   
+   
+   % \@urlcharsother
+   %
+   % 'Other' some characters which may appear in DOIs and URIs.
+   %
+   % All of the characters here may appear in URIs, except for '^' and '\'.
+   %
+   % There appear to be almost no restrictions on what characters appear
+   % in DOIs (or at least none discovereable in ISO 26324:2012, which
+   % says simply that the 'DOI suffix' is "a character string of any
+   % length".  A DOI registrant which uses characters outside ASCII plus
+   % the following set, is a DOI registrant who should be taken outside
+   % and challenged on their taste.
+   %
+   % The following list is not simply \dospecials, because that includes
+   % '{' and '}', which we need.  And if they're in a DOI... well.
+   \def\@urlcharsother{%
+       \let\do\@makeother 
+       \do\\\do\$\do\&\do\#\do\^\do\_\do\%\do\~}
+   
+   % \doi
+   %
+   % \doi{10.foo} formats the DOI in the argument, and provides a link to dx.doi.org.
+   % \doi[text]{10.foo} formats the DOI 10.foo, but provides 'text' as the link.
+   % The DOI can contain {\$&#^_%~} (though there's not necessarily a
+   % guarantee that these will still work as URL characters within the PDF)
+   \def\doi{\begingroup
+       \@urlcharsother
+       \@ifnextchar[%
+       {\@doi}
+       {\@doi[]}}
+   \def\@doi[#1]#2{%
+       \def\@tempa{#1}%
+       \ifx\@tempa\@empty
+       \href{http://dx.doi.org/#2}{doi:#2}%
+       \else
+       \href{http://dx.doi.org/#2}{#1}%
+       \fi
+       \endgroup
+   }
+   
+   % \eprint
+   %
+   % \eprint{defaultArchivePrefix}{id} expands to a link to the given ID
+   % at a suitable archive.  The 'id' can be either a bare ID (such as
+   % yymm.1234) for arXiv, or can include an archive prefix.  If there is
+   % no prefix in the 'id', then 'defaultArchivePrefix' supplies a default.
+   %
+   % Thus
+   %   \eprint{}{arXiv:yymm.1234} -> \href{http://arxiv.org/abs/yymm.1234}{arXiv:yymm.1234}
+   %   \eprint{}{yymm.1234} -> same as \eprint{}{arXiv:yymm.1234}
+   %   \eprint{arXiv}{arXiv:yymm.1234} -> same
+   %   \eprint{dblp}{1234} -> \href{http://dblp.uni-trier.de/rec/bibtex/1234.xml}{dblp:1234}
+   %   \eprint{dblp}{arXiv:yymm.1234} -> same as \eprint{}{arXiv:yymm.1234}
+   %   \eprint{}{wibble:1234} -> wibble:1234 (doesn't match anything)
+   %
+   % A prefix 'PFX' is 'registered' by defining a macro
+   % \@eprint@PFX#1{...} which formats the identifier (that is, \eprint's
+   % second argument _minus_ any colon-terminated prefix).
+   \def\eprint#1#2{%
+       \@eprint#1:#2::\@nil}
+   \def\@eprint@arXiv#1{\href{http://arxiv.org/abs/#1}{{\tt arXiv:#1}}}
+   \def\@eprint@dblp#1{\href{http://dblp.uni-trier.de/rec/bibtex/#1.xml}{dblp:#1}}
+   \def\@eprint#1:#2:#3:#4\@nil{%
+       \def\@tempa{#1}%
+       \def\@tempb{#2}%
+       \def\@tempc{#3}%
+       \ifx\@tempc\@empty
+       \let\@tempc\@tempb
+       \let\@tempb\@tempa
+       \fi
+       \ifx\@tempb\@empty
+       % default to arXiv
+       \def\@tempb{arXiv}%
+       \fi
+       % If \@tempb is a 'recognised' prefix, then call it, otherwise, just
+       % print prefix:id and be done with it.  A prefix is 'recognised' if
+       % there's a macro \@eprint@<prefix>.
+       \@ifundefined{@eprint@\@tempb}
+       {\@tempb:\@tempc}
+       % or call macro '@eprint@\@tempb' on the argument \@tempc
+       {\expandafter\expandafter\csname @eprint@\@tempb\endcsname\expandafter{\@tempc}}%
+   }
+   
+   % \mniiiauthor
+   %
+   % The following implements the three-author-hack described in mnras.bst.
+   %
+   % This consumes a command for each such author.  It's surely possible
+   % to avoid this (with some constructions involving {\\#1}; see
+   % Appendix D cleverness), but that would verge on the unmaintanably
+   % arcane, and not really be worth it.
+   \def\mniiiauthor#1#2#3{%
+       \@ifundefined{mniiiauth@#1}
+       {\global\expandafter\let\csname mniiiauth@#1\endcsname\null #2}
+       {#3}}
+   
+   %-----------------------------------------------------------------------------------------------
+
+% If you would like to use biblatex for your reference management, as opposed to the default `natbibpackage` pass the option `custombib` in the document class. Comment out the previous line to make sure you don't load the natbib package. Uncomment the following lines and specify the location of references.bib file
+
+%\RequirePackage[backend=biber, style=numeric-comp, citestyle=numeric, sorting=nty, natbib=true]{biblatex}
+%\addbibresource{References/references} %Location of references.bib only for biblatex, Do not omit the .bib extension from the filename.
+
+\fi
+
+% changes the default name `Bibliography` -> `References'
+\renewcommand{\bibname}{References}
+% ******************************* Joris' edit **********************************
+% (Edit: change font to small and add text)
+\renewcommand{\bibfont}{\small}
+%\renewcommand{\bibpreamble}{These are the references used\dots}
+
+
+% ******************************************************************************
+% ************************* User Defined Commands ******************************
+% ******************************************************************************
+
+% *********** To change the name of Table of Contents / LOF and LOT ************
+
+%\renewcommand{\contentsname}{My Table of Contents}
+%\renewcommand{\listfigurename}{My List of Figures}
+%\renewcommand{\listtablename}{My List of Tables}
+
+
+% ********************** TOC depth and numbering depth *************************
+
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+
+
+% ******************************* Nomenclature *********************************
+
+% To change the name of the Nomenclature section, uncomment the following line
+
+%\renewcommand{\nomname}{Symbols}
+
+
+% ********************************* Appendix ***********************************
+
+% The default value of both \appendixtocname and \appendixpagename is `Appendices'. These names can all be changed via:
+
+%\renewcommand{\appendixtocname}{List of appendices}
+%\renewcommand{\appendixname}{Appndx}
+
+% *********************** Configure Draft Mode **********************************
+
+\ifsetDraft
+    % Uncomment to disable figures in `draft'
+    %\setkeys{Gin}{draft=true}  % set draft to false to enable figures in `draft'
+    
+    % These options are active only during the draft mode
+    % Default text is "Draft"
+    %\SetDraftText{DRAFT}
+    
+    % Default Watermark location is top. Location (top/bottom)
+    \SetDraftWMPosition{bottom}
+    
+    % Draft Version - default is v1.0
+    \SetDraftVersion{v1.0}
+    
+    % Draft Text grayscale value (should be between 0-black and 1-white)
+    % Default value is 0.75
+    %\SetDraftGrayScale{0.8}
+\fi
+
+
+% ******************************** Todo Notes **********************************
+%% Uncomment the following lines to have todonotes.
+
+\ifsetDraft
+	\usepackage[colorinlistoftodos]{todonotes}
+	\newcommand{\mynote}[1]{\todo[author=Joris,size=\small,inline,color=green!40]{#1}}
+\else
+	\newcommand{\mynote}[1]{}
+	\newcommand{\listoftodos}{}
+\fi
+
+% Example todo: \mynote{Hey! I have a note}
+
+% ******************************** Highlighting Changes **********************************
+% Uncomment the following lines to be able to highlight text/modifications.
+\ifsetDraft
+  \usepackage{color, soul}
+  \newcommand{\hlc}[2][yellow]{{\sethlcolor{#1} \hl{#2}}}
+  \newcommand{\hlfix}[2]{\texthl{#1}\todo{#2}}
+\else
+  \newcommand{\hlc}[2]{}
+  \newcommand{\hlfix}[2]{}
+\fi
+
+% Example highlight 1: \hlc{Text to be highlighted}
+% Example highlight 2: \hlc[green]{Text to be highlighted in green colour}
+% Example highlight 3: \hlfix{Original Text}{Fixed Text}
+
+% *****************************************************************************
+% ******************* Better enumeration my MB*************
+\usepackage{enumitem}
