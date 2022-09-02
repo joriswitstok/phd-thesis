@@ -1,0 +1,36 @@
+%!TEX root = ../thesis.tex
+% ******************************* Thesis Appendix C ****************************
+\chapter{Dual constraints with ALMA}
+\label{app:Dual constraints with ALMA}
+
+%\renewcommand\thesection{A.\arabic{section}}
+%\setcounter{section}{0}
+
+%\renewcommand\thefigure{A.\arabic{figure}}
+%\setcounter{figure}{0}
+
+\section{Dust peak temperature measurements}
+\label{appDsec:Dust peak temperature measurements}
+
+Here, we briefly discuss the significance of the SED peak temperature as defined in \cref{chDeq:T_peak} and various measurements and predictions reported in the literature which are included in \cref{chDfig:T_peak_evolution}. Importantly, the peak temperature offers a way to compare observations of the dust temperature consistently since this approach avoids degeneracies introduced by the chosen opacity model, a largely unconstrained quantity that is typically assumed to be a fixed value in the greybody spectrum \citep[e.g.][]{2014PhR...541...45C}.
+
+For a perfect blackbody, the intrinsic temperature $T_\text{dust}$ is exactly equal to the peak temperature but notably, for a greybody $T_\text{peak}$ is generally lower \citep{2012MNRAS.425.3094C}. This effect can be understood by considering a simplistic two-component dust model, where the radiation field is driven towards thermal equilibrium through absorption by the colder component in the optically thick regime, resulting in an observed outward spectrum with a peak wavelength shifted to a higher wavelength (i.e. lower $T_\text{peak}$). Vice versa, when fitting a greybody SED template, the inferred intrinsic dust temperature will strongly depend on the opacity model \citep[e.g.][]{2020A&A...634L..14C}, while the observed peak temperature should remain the same to best fit the observed data. Indeed, $T_\text{peak}$ derived from our fits is approximately unchanged under the assumption of different opacity models, while the inferred $T_\text{dust}$ can change drastically: the more optically thick the SED is (i.e. the higher $\lambda_0$), the higher the resulting intrinsic temperature, $T_\text{dust}$ (see \cref{chDssec:Discussion:Dust_SED_fitting_procedure}).
+
+In \cref{chDfig:T_peak_evolution}, we show the results at lower redshifts ($0 < z < 4$) of \citet{2018A&A...609A..30S}, who fit detailed SED templates built from multiple dust components to stacked spectra. Their reported dust temperatures are thus mass-weighted; however, they find a simple, linear relation where the mass-weighted temperature is roughly $91\%$ of the luminosity-weighted one. This implies temperatures inferred from a greybody, which are necessarily weighted by luminosity, are similar to (although $\ssim 10\%$ higher than) the mass-weighted temperature, effectively setting an upper limit. We also show the (partially extrapolated) linear fit obtained by \citet{2018A&A...609A..30S} and the power-law fit to the peak-temperature evolution of simulated galaxies by \citet{2019MNRAS.489.1397L}.
+
+At intermediate redshifts ($2 < z < 6$), SMGs from the SPT survey \citep{2020ApJ...902...78R} are shown as squares (all other high-redshift galaxies are circles with errorbars). In addition, results for four star-forming galaxies at $z \sim 6$ with photometric detections in three ALMA bands each are included as circles \citep{2020MNRAS.498.4192F}. For five star-forming galaxies at $6 < z < 8$ -- J1211-0118 and J0217-0208 at $z \simeq 6$ \citep{2020ApJ...896...93H}, A1689-zD1 at $z \simeq 7.13$ \citep{2017MNRAS.466..138K, 2020MNRAS.495.1577I, 2021MNRAS.508L..58B}, B14-65666 at $z \simeq 7.15$ \citep{2019PASJ...71...71H, 2021ApJ...923....5S}, and MACS0416-Y1 at $z \simeq 8.31$ \citep{2019ApJ...874...27T, 2020MNRAS.493.4294B} -- we derive dust properties using the same \program{mercurius} fit described in \cref{chDssec:Discussion:Dust_SED_fitting_procedure} for consistency. We allow $\beta_\text{IR}$ to vary freely for A1689-zD1, since there are four dust continuum detections; for MACS0416-Y1, we take $\beta_\text{IR} = 2$ as this provides a better fit. For A1689-zD1 and B14-65666 we opt for the fiducial self-consistent opacity model (we note this assumption has little impact on the inferred $T_\text{peak}$), while for MACS0416-Y1 we use an optically thin SED to obtain a conservative lower limit on the temperature ($95 \%$ confidence). We also adopt an optically thin SED for J1211-0118 and J0217-0208 due to the lack of a size measurement.
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{"Plots/ChapterD/Dust_maps_spectra_clean"}
+    \caption[Beam placement for spatially resolved analysis.]{Beam placement for spatially resolved analysis. The top row of images shows the UV continuum with contours of the $\ssim 160 \, \mathrm{\upmu m}$ dust continuum (starting from $2 \sigma$ and going up in steps of $1 \sigma$ for COS-2987030247 and UVISTA-Z-019, else $2 \sigma$). The peaks of the UV and dust continua (if detected) are indicated with a black and purple cross, respectively. Contours (at $2 \sigma$ and $3 \sigma$) of the \CIILam\ and \OIIILam\ lines are shown in the second row (and again the UV and dust peaks). The last two rows contain their spectra, both integrated over the entire $2 \sigma$ region (in the same colour as their contours) as well as for the individual regions. For each source, one or several regions are highlighted in the spectra and correspondingly by their number in the second row of images. The filled-in grey region indicates the spectral channels over which the spectra have been integrated.
+    }
+    \label{appDfig:Beam_placement_for_spatially_resolved_analysis}
+\end{figure*}
+
+\section{Spatially resolved analysis}
+\label{appDsec:Spatially_resolved_analysis}
+
+In \cref{appDfig:Beam_placement_for_spatially_resolved_analysis}, we show the placements of individual regions (circles with a radius $1.5$ times that of the mean circularised beam between the \CII\ and \OIIIf\ observations) that were used in the spatially resolved analysis (\cref{chDssec:Discussion:OIII/CII_spatially_resolved_analysis}). The \OIIILam\ and \CIILam\ maps were created from imaging parameters that have been chosen to match beam sizes; see \cref{chDtab:Observations1,chDtab:Observations2}; the dust continuum at $\ssim 160 \, \mathrm{\upmu m}$ has the same imaging parameters (and therefore nearly identical beam) as the \CII\ line. IR luminosities were calculated similarly as discussed in \cref{chDsec:Discussion:Dust_properties}. Finally, the UV continuum has been convolved with an effective beam found by the Richardson-Lucy algorithm to match the dust continuum PSF (see also \cref{chDssec:Discussion:OIII/CII_spatially_resolved_analysis}).
+
+For each source, one or several regions are highlighted in the spectra and correspondingly by their number in the second row of images. From the spectra, it for instance becomes clear that, although there still seems to be some residual signal, the \OIIIf\ flux is weakest in region 2 and 5 of COS-3018555981.

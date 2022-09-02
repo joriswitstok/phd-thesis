@@ -6,8 +6,8 @@
 % other page dimensions
 \ifsetCustomMargin
 % ******************************* Joris' edit **********************************
-  %\RequirePackage[left=37mm,right=30mm,top=35mm,bottom=30mm]{geometry}
-  \RequirePackage[left=15mm,right=15mm,top=20mm,bottom=20mm]{geometry}
+  %\usepackage[left=37mm,right=30mm,top=35mm,bottom=30mm]{geometry}
+  \usepackage[left=15mm, right=15mm, top=20mm, bottom=20mm]{geometry}
   \setFancyHdr % To apply fancy header after geometry package is loaded
 \fi
 
@@ -27,7 +27,12 @@
 \ifsetCustomFont
   % Set your custom font here and use `customfont' in options. Leave empty to
   % load computer modern font (default LaTeX font).
-  \RequirePackage{helvet}
+%  \usepackage{mathptmx}
+%  \usepackage{fourier}
+  \usepackage[scaled]{helvet}
+  
+  % Sets the sans-serif family as the default family (required to use a sans-serif font such as Utopia in the Fourier package or Helvetica)
+%  \renewcommand{\familydefault}{\sfdefault}
 
   % For use with XeLaTeX
   %  \setmainfont[
@@ -39,8 +44,8 @@
   %    BoldItalicFont = LinLibertine_RZI, % Linux Libertine O Regular Semibold Italic
   %  ]
   %  {libertine}
-  %  % load font from system font
-  %  \newfontfamily\libertinesystemfont{Linux Libertine O}
+  % load font from system font
+%  \newfontfamily\libertinesystemfont{Linux Libertine O}
 \fi
 
 % *****************************************************************************
@@ -49,8 +54,28 @@
 
 \newcommand{\program}{\textsc}
 \newcommand{\ssim}{\sim \!}
+\def\app#1#2{%
+    \mathrel{%
+        \setbox0=\hbox{$#1\sim$}%
+        \setbox2=\hbox{%
+            \rlap{\hbox{$#1\propto$}}%
+            \lower1.1\ht0\box0%
+        }%
+        \raise0.25\ht2\box2%
+    }%
+}
+\def\appropto{\mathpalette\app\relax}
+
+\definecolor{COS2987}{rgb}{0.8941176470588236, 0.10196078431372549, 0.10980392156862745}
+\definecolor{COS3018}{rgb}{0.21568627450980393, 0.49411764705882355, 0.7215686274509804}
+\definecolor{UVIS001}{rgb}{0.30196078431372547, 0.6862745098039216, 0.2901960784313726}
+\definecolor{UVIS007}{rgb}{0.596078431372549, 0.3058823529411765, 0.6392156862745098}
+\definecolor{UVIS019}{rgb}{1.0, 0.4980392156862745, 0.0}
+\definecolor{ALMAsky}{RGB}{231, 231, 221}
 
 \newcommand{\Isample}{\citeauthor{2016Natur.529..178I} sample}
+
+\newcommand{\LCDM}{\ensuremath{\mathrm{\Lambda CDM}}}
 
 \newcommand{\lymana}{{Lyman-\ensuremath{\upalpha}}}
 \newcommand{\lymanatext}{Lyman-α}
@@ -62,6 +87,7 @@
 \newcommand{\HeII}{{\ion{He}{II}}}
 \newcommand{\OIIIf}{{[\ion{O}{III}]}}
 \newcommand{\OIIIs}{{\ion{O}{III}]}}
+\newcommand{\CII}{{[\ion{C}{II}]}}
 \newcommand{\CIII}{{\ion{C}{III}}}
 \newcommand{\CIIIf}{{[\ion{C}{III}]}}
 \newcommand{\CIIIs}{{\ion{C}{III}]}}
@@ -69,37 +95,51 @@
 \newcommand{\OII}{{[\ion{O}{II}]}}
 \newcommand{\NeIII}{{[\ion{Ne}{III}]}}
 
-\newcommand{\Ha}{{H\ensuremath{\upalpha}}}
-\newcommand{\Hb}{{H\ensuremath{\upbeta}}}
+\newcommand{\Halpha}{{H\ensuremath{\upalpha}}}
+\newcommand{\Hbeta}{{H\ensuremath{\upbeta}}}
 \newcommand{\NII}{{[\ion{N}{II}]}}
 \newcommand{\SII}{{[\ion{S}{II}]}}
 \newcommand{\OI}{{[\ion{O}{I}]}}
 
-\newcommand{\Angstrom}{\ensuremath{\AA}}
+\newcommand{\CIILam}{{\CII\ 158 $\upmu\mathrm{{m}}$}}
+\newcommand{\OIIILam}{{\OIIIf\ 88 $\upmu\mathrm{{m}}$}}
+\newcommand{\NIILam}{{\NII\ 205 $\upmu\mathrm{{m}}$}}
+
+\newcommand{\Angstrom}{\text{\AA}}
 
 \newcommand{\arcsec}{\hbox{$^{\prime\prime}$}}
 \newcommand{\ion}[2]{\textup{#1\,\textsc{\lowercase{#2}}}}
 
 \usepackage{commath}
 \usepackage{upgreek}
+\usepackage[greek, english]{babel}
 
 \usepackage{ae,aecompl}
-\usepackage{xcolor}
+\usepackage{color, soul}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{csvsimple}
 
-\RequirePackage{epigraph}
-%\RequirePackage{lettrine}
-%\RequirePackage[super]{nth}
+\usepackage[leftmargin=10pt, rightmargin=10pt, skipabove=5pt, skipbelow=5pt, innerleftmargin=5pt, innerrightmargin=5pt, innertopmargin=10pt, innerbottommargin=10pt, linewidth=0pt, innerlinewidth=0pt, middlelinewidth=0pt, outerlinewidth=0pt, roundcorner=0pt]{mdframed}
+\usepackage{wrapfig}
 
-\RequirePackage{titlesec}
-\newcommand{\PreContentTitleFormat}{\titleformat{\chapter}[display]{\scshape\Large}
-	{\Large\filleft{\chaptertitlename} \Huge\thechapter}
-	{1ex}{}
-	[\vspace{1ex}\titlerule]}
-\newcommand{\ContentTitleFormat}{\titleformat{\chapter}[display]{\scshape\huge}
-	{\Large\filleft{\chaptertitlename} \Huge\thechapter}{1ex}
+\usepackage{epigraph}
+\usepackage{lettrine}
+\usepackage[super]{nth}
+
+\usepackage[pages=some, placement=top]{background}
+
+\newcommand{\CurrentTitleColor}{\color{black}}
+\usepackage{titlesec}
+\newcommand{\PreContentTitleFormat}{\titleformat{\chapter}[display]{\CurrentTitleColor\scshape\huge}
+	{\CurrentTitleColor\Large\filleft{\chaptertitlename} \Huge\thechapter}
+	{2ex}{}
+%	[\vspace{1ex}\titlerule]
+}
+\newcommand{\ContentTitleFormat}{\titleformat{\chapter}[display]{\CurrentTitleColor\scshape\huge}
+	{\CurrentTitleColor\Large\filleft{\chaptertitlename} \Huge\thechapter}{2ex}
 	{\titlerule\vspace{1ex}\filright}
-	[\vspace{1ex}\titlerule]}
+%	[\vspace{1ex}\titlerule]
+}
 \newcommand{\PostContentTitleFormat}{\PreContentTitleFormat}
 \PreContentTitleFormat
 
@@ -107,15 +147,14 @@
 
 %\usepackage{algpseudocode}
 
-
 % ********************Captions and Hyperreferencing / URL **********************
 
 % Captions: This makes captions of figures use a boldfaced small font.
-%\RequirePackage[small,bf]{caption}
+%\usepackage[small,bf]{caption}
 
 % ******************************* Joris' edit **********************************
-%\RequirePackage[labelsep=space,tableposition=top]{caption}
-\RequirePackage[small, labelfont=bf, labelsep=space, tableposition=top]{caption}
+%\usepackage[labelsep=space,tableposition=top]{caption}
+\usepackage[small, labelfont=bf, labelsep=space, tableposition=top]{caption}
 %\renewcommand{\figurename}{Fig.} %to support older versions of captions.sty
 \renewcommand{\figurename}{Figure}
 
@@ -185,16 +224,15 @@
 
 %\usepackage{cleveref} %Referencing without need to explicitly state fig /table
 \usepackage[capitalise]{cleveref} %noabbrev
-\crefname{figure}{Fig.}{Figs.}
-\crefname{section}{Sect.}{Sects.}
-
-%\bibpunct[]{(}{)}{;}{a}{}{,} % to follow the A&A style
+\crefname{figure}{Figure}{Figures}
+%\crefname{section}{Sect.}{Sects.}
+\crefname{equation}{equation}{equations}
 
 % Add `custombib' in the document class option to use this section
 \ifuseCustomBib
-   \RequirePackage[authoryear]{natbib} % CustomBib
-   %\RequirePackage[comma, sort&compress, authoryear]{natbib} % CustomBib
-   %\RequirePackage[comma, sort&compress, numbers]{natbib} % CustomBib
+   \usepackage[authoryear]{natbib} % CustomBib
+   %\usepackage[comma, sort&compress, authoryear]{natbib} % CustomBib
+   %\usepackage[comma, sort&compress, numbers]{natbib} % CustomBib
    
    %------------- Joris' edit (taken from MNRAS template) ----------------
    
@@ -397,7 +435,7 @@
 
 % If you would like to use biblatex for your reference management, as opposed to the default `natbibpackage` pass the option `custombib` in the document class. Comment out the previous line to make sure you don't load the natbib package. Uncomment the following lines and specify the location of references.bib file
 
-%\RequirePackage[backend=biber, style=numeric-comp, citestyle=numeric, sorting=nty, natbib=true]{biblatex}
+%\usepackage[backend=biber, style=numeric-comp, citestyle=numeric, sorting=nty, natbib=true]{biblatex}
 %\addbibresource{References/references} %Location of references.bib only for biblatex, Do not omit the .bib extension from the filename.
 
 \fi
@@ -423,8 +461,8 @@
 
 % ********************** TOC depth and numbering depth *************************
 
-\setcounter{secnumdepth}{2}
-\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
 
 
 % ******************************* Nomenclature *********************************
@@ -479,7 +517,9 @@
 % ******************************** Highlighting Changes **********************************
 % Uncomment the following lines to be able to highlight text/modifications.
 \ifsetDraft
-  \usepackage{color, soul}
+% ******************************* Joris' edit **********************************
+% Don't load color, soul packages (instead always use these, also when not in draft mode)
+%  \usepackage{color, soul}
   \newcommand{\hlc}[2][yellow]{{\sethlcolor{#1} \hl{#2}}}
   \newcommand{\hlfix}[2]{\texthl{#1}\todo{#2}}
 \else

@@ -1,0 +1,7 @@
+field|object|z|emline|MS|freq|chanwidth|int|ant|lbl|res|beamsize|RMS|sens|codes
+UVISTA|\setulcolor{UVIS001}\ul{UVISTA-Z-001}|7.0611|{[\ion{C}{II}]} 158 $\upmu\mathrm{m}$|20|235.774|40|4.2|47|1397.8|0.188|Natural: $0.6 \arcsec \times 0.5 \arcsec$|234|119|2015.1.00540.S, 2018.1.00085.S, 2018.1.00933.S, 2019.1.01611.S
+|||{[\ion{O}{III}]} 88 $\upmu\mathrm{m}$|2|420.909|70|1.3|48|500.2|0.294|Natural ($0.2 \arcsec$): $0.6 \arcsec \times 0.5 \arcsec$\newline Natural: $0.5 \arcsec \times 0.5 \arcsec$|\newline 435|465|2019.1.01524.S
+UVISTA|\setulcolor{UVIS007}\ul{UVISTA-Z-007}|6.7498|{[\ion{C}{II}]} 158 $\upmu\mathrm{m}$|2|245.244|40|0.44|46|313.7|0.804|Briggs ($1.0$): $1.3 \arcsec \times 1.1 \arcsec$\newline Natural: $1.4 \arcsec \times 1.2 \arcsec$|\newline 272|286|2018.1.00085.S
+|||{[\ion{O}{III}]} 88 $\upmu\mathrm{m}$|2|437.817|70|1.6|46|500.2|0.282|Natural ($1.0 \arcsec$): $1.1 \arcsec \times 1.1 \arcsec$\newline Natural: $0.6 \arcsec \times 0.5 \arcsec$|\newline 738|641|2019.1.01524.S
+UVISTA|\setulcolor{UVIS019}\ul{UVISTA-Z-019}|6.7544|{[\ion{C}{II}]} 158 $\upmu\mathrm{m}$|7|245.099|40|4.4|45|1547.1|0.163|Natural ($0.2 \arcsec$): $0.4 \arcsec \times 0.4 \arcsec$\newline Natural: $0.4 \arcsec \times 0.3 \arcsec$|\newline 81.2|92.3|2018.1.00085.S, 2019.1.01611.S
+|||{[\ion{O}{III}]} 88 $\upmu\mathrm{m}$|2|437.557|70|0.89|45|500.2|0.283|Briggs ($1.5$): $0.5 \arcsec \times 0.4 \arcsec$\newline Natural: $0.5 \arcsec \times 0.4 \arcsec$|\newline 1015|680|2019.1.01524.S

@@ -1,0 +1,70 @@
+%!TEX root = ../thesis.tex
+% ******************************* Thesis Appendix B ****************************
+\chapter{Assessing the sources of reionisation}
+\label{app:Assessing the sources of reionisation}
+
+%\renewcommand\thesection{A.\arabic{section}}
+%\setcounter{section}{0}
+
+%\renewcommand\thefigure{A.\arabic{figure}}
+%\setcounter{figure}{0}
+
+\section{\texorpdfstring{\MgII}{MgII} and \texorpdfstring{\CIII}{CIII} significance}
+\label{appAsec:MgII and CIII significance}
+
+\begin{table}
+    \centering
+    \caption[Significance of the \MgII\ detection]
+    {Measured velocity offset and line flux in different subsets of the X-shooter data, corresponding to the rows in \cref{appAfig:MgII significance}. Given quantities are defined as in \cref{chAtab:Results}.
+    }
+    \begin{tabular}{lcc}
+        \hline
+        Configuration & $\Delta v \, (\mathrm{km/s})$ & $\mathrm{Flux} \, (10^{-18} \, \mathrm{erg \, s^{-1} \, cm^{-2}})$
+        \\
+        \hline
+        \csvreader[separator=pipe, late after line=\\, head to column names]{Tables/ChapterA/MgII_appendix.csv}{}{\ptype & \ifcsvstrcmp{\dv}{nan}{\dots}{$\dv \ifcsvstrcmp{\dverr}{nan}{}{\pm \dverr}$} & \ifcsvstrcmp{\flux}{nan}{\dots}{\ifcsvstrcmp{\uplim}{True}{$<\flux$}{$\flux \pm \fluxerr$}}
+        }
+    \end{tabular}
+    \label{appAtab:MgII significance}
+\end{table}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{"Plots/ChapterA/MgII_significance"}
+    \caption[Various X-shooter spectra of \MgII]{X-shooter spectra of \MgII\ for each of the three OBs individually (first three columns) and the combined spectra for a smaller and extended aperture (final two columns). One-dimensional spectra for the individual OBs have been extracted from the same smaller aperture as in the fourth column.
+    }
+    \label{appAfig:MgII significance}
+\end{figure*}
+
+In this appendix, we elaborate on the significance of the (non-)detections of the \MgII\ emission line and the $\CIIIs \, \lambda \, 1907 \, \Angstrom, \CIIIf \, \lambda \, 1909 \, \Angstrom$ doublet. In \cref{appAfig:MgII significance}, X-shooter spectra of \MgII\ are shown for each of the three observation blocks (OBs) individually (first three columns) and the combined result for a smaller and extended aperture (final two columns). The measured velocity offset and flux for each different configuration are summarised in \cref{appAtab:MgII significance}.
+
+Furthermore, \cref{appAfig:CIII non-detection} shows the portion of the spectrum where the \CIII\ doublet would be expected, both without and with telluric absorption correction (TAC; see \cref{chAssec:Observations: X-shooter}). It is unclear whether a signal is present in the spectra, which lack a clear dark-light-dark pattern (cf. \cref{chAfig:Overview panel}), in part because of skyline contamination and partly owing to the strong telluric absorption. We have chosen not to attempt to measure an upper limit for the $\CIIIf \, \lambda \, 1909 \, \Angstrom$ line directly, as it falls precisely on a region that is heavily impacted by skylines and telluric absorption. Instead, we assume a line ratio (see \cref{chAssec:Results: X-shooter}).
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{"Plots/ChapterA/CIII_nondetection"}
+    \caption[Non-detections of \CIII]{X-shooter spectra in the wavelength region where the \CIII\ doublet would be expected, both without and with TAC (see \cref{chAssec:Observations: X-shooter}). The top row shows the resulting atmospheric transmission calculated by \program{molecfit}. A region within $-200 \,\mathrm{km/s} < v < 200 \, \mathrm{km/s}$ of the expected $1907 \, \Angstrom$ line centre, which has been used to place an upper limit on the flux, is highlighted in the bottom row of one-dimensional spectra.
+    }
+    \label{appAfig:CIII non-detection}
+\end{figure}
+
+\section{SDSS selection}
+\label{appAsec:SDSS selection}
+
+For the comparison sample drawn from the SDSS DR7 (discussed in \cref{chAssec:Discussion: NeIII/OII}), we outline the selection criteria here in detail. Following previous studies \citep[e.g.][]{2006MNRAS.372..961K, 2014ApJ...788...88J, 2016MNRAS.456.3354F}, we select galaxies satisfying the following criteria:
+\begin{enumerate}[label=(\roman*)]
+    \item $\mathtt{TARGETTYPE} = \mathrm{GALAXY}$ and $\mathtt{Z\_WARNING} = 0$.
+    \item For all emission lines in the ratios \OIIIf/\Hbeta, \NII/\Halpha, \SII/\Halpha, and \OI/\Halpha\ used in \citetalias{1981PASP...93....5B} diagrams, we require a SNR of $\text{SNR} > 3/\sqrt{2} \approx 2.12$ on the ratios themselves (leading to a more complete sample, see \citet{2014ApJ...788...88J} -- additionally, formal uncertainty corrections as discussed in their Appendix A have been applied). Furthermore, we only select galaxies with $\text{SNR} > 30$ on the \OII\ doublet -- see the discussion in \cref{chAssec:Discussion: NeIII/OII}.
+    \item In order to align with previous studies, redshifts between $0.04 < z < 0.2$. These lower and upper limits are imposed to avoid strong fiber-aperture effects, and to cover detections of intrinsically weak lines while maintaining a good completeness for Seyfert-type galaxies, respectively \citep[e.g.][]{2014ApJ...788...88J}.
+    \item A valid stellar mass measurement ($17$ entries have $M_* = -1$).
+\end{enumerate}
+This leads to a final sample of $8960$ galaxies. We classify the galaxies into star-forming, composite, Seyfert, and LINER classes (although we will focus only on star-forming and Seyfert types), based on the \NII, \SII, and \OI\ \citetalias{1981PASP...93....5B} diagrams, following \citet{2006MNRAS.372..961K}. Subsequently, the line fluxes are corrected for dust extinction using the \citet{1989ApJ...345..245C} reddening curve assuming $R_V = A_V/E(B-V) = 3.1$, and a fiducial intrinsic \Halpha/\Hbeta\ ratio of $2.85$ for star-forming galaxies, and $3.1$ for AGN-dominated systems \citep[for case-B recombination at $T = 10^4 \, \mathrm{K}$ and $n_e \sim 10^2$-$10^4 \, \mathrm{cm^{-3}}$, see][]{2006MNRAS.372..961K}. In this sample, $2484$ galaxies or 27.7\% have a $\text{SNR} > 5$ \NeIII\ detection.
+
+\section{\textit{JWST} ETC calculation}
+\label{appAsec:JWST ETC calculation}
+
+Given the observed $\MgII \, \lambda \, 2796 \, \Angstrom$ flux of $5.0 \cdot 10^{-18} \, \mathrm{erg \, s^{-1} \, cm^{-2}}$ (see \cref{chAtab:Results}) and assuming a typical flux ratio of $F_{2796}/F_{2804} \approx 1.9$ between the $\MgII$ lines at $2796 \, \Angstrom$ and $2804 \, \Angstrom$ \citep[e.g.][]{2018ApJ...855...96H}, the total flux of the doublet would become $7.6 \cdot 10^{-18} \, \mathrm{erg \, s^{-1} \, cm^{-2}}$. However, taking into account the lensing magnification of $\mu = 29$, we derive an intrinsic flux of $2.6 \cdot 10^{-19} \, \mathrm{erg \, s^{-1} \, cm^{-2}}$ at $z=4.88$. We note that the uncertainty and spatial variation of the lensing magnification makes this only a rough estimate of the true intrinsic flux. Assuming an object with the same luminosity at $z = 7$ (in which case \MgII\ would be observed at $\lambda_\text{obs} = 2.24 \, \mathrm{\upmu m}$), this would lead to an observed flux of $1.13 \cdot 10^{-19} \, \mathrm{erg \, s^{-1} \, cm^{-2}}$. The continuum flux density from our fit is $2.29 \cdot 10^{-20} \, \mathrm{erg \, s^{-1} \, cm^{-2} \, \Angstrom^{-1}}$ or $383 \, \mathrm{nJy}$ at $\lambda_\text{obs} = 2.24 \, \mathrm{\upmu m}$, which translates to $2.5 \cdot 10^{-22} \, \mathrm{erg \, s^{-1} \, cm^{-2} \, \Angstrom^{-1}}$ or $4.18 \, \mathrm{nJy}$ if it were unlensed at $z=7$.
+
+Alternatively, our estimate implies $F_{2796} = 7.4 \cdot 10^{-20} \, \mathrm{erg \, s^{-1} \, cm^{-2}}$. This is inconsistent with a recent estimate from \citet{2020MNRAS.498.2554C}, the difference being explained by the fact that their higher flux estimate (by a factor $\ssim 8$) arises from considering a source with a $H$-band magnitude of $25$ (in the F160W filter; this corresponds to $M_\mathrm{UV} \simeq -21.9$ at $z=7$). The unlensed observed magnitude of RCS0224z5 is $\ssim 26.8 \, \mathrm{mag}$, which at $z \simeq 4.88$ translates to $M_\mathrm{UV} \simeq -19.6$. This implies an observed magnitude of $27.4$ at $z=7$ -- a factor $\ssim 9$ fainter than a $25 \, \mathrm{mag}$ source -- and is instead appropriate when considering intrinsically fainter and hence more common sources. In a typical extremely deep field, one would on average expect less than one source at $z \sim 7$ with magnitude $25$, and the order of $N \sim 1$ in a medium-deep field, compared to $N \sim 2$ and $N \gtrsim 70$ respectively for a $m_\text{UV} \sim 27.4 \, \mathrm{mag}$ source (derived from the $z \sim 7$ number counts in the $5 \, \mathrm{arcmin^2}$ XDF and $\ssim 120 \, \mathrm{arcmin^2}$ CANDELS-DEEP fields presented in \citealt{2015ApJ...803...34B}).
+
+Simulations\footnote{\textit{JWST} Exposure Time Calculator: \url{https://jwst.etc.stsci.edu}.} of the near-infrared spectrograph on \textit{JWST} (NIRSpec), point out that for an (intrinsically) relatively faint object like RCS0224z5, detecting \MgII\ spectroscopically would be challenging: for example, a $10 \, \mathrm{ks}$ exposure with the multi-object spectrograph observing mode at low resolution would result in a signal of \MgII\ at the level of $0.65 \sigma$ per spectral pixel (but we note that integrating over the few pixels containing the line could slightly increase the overall SNR). At $R \sim 100$, this would render the doublet (separated by $\ssim 770 \, \mathrm{km/s}$) unresolved as well. The same exposure would yield a SNR of $0.56$ per spectral pixel at medium spectral resolution (the F170LP/G235M grating achieving $R \sim 1000$ at $\lambda_\text{obs} = 2.24 \, \mathrm{\upmu m}$), which would resolve the doublet down to $\ssim 300 \, \mathrm{km/s}$. Finally, a deep ($10 \, \mathrm{h}$) exposure allow a SNR of $0.67$ per spectral pixel at high resolution ($R \sim 2000$ or $\ssim 150 \, \mathrm{km/s}$). Still, for objects with a more intense episode of ongoing star formation (possibly boosting the flux by a factor of a few, up to a factor $\ssim 8$ for a $M_\mathrm{UV} \simeq -21.9$ source as in \citealt{2020MNRAS.498.2554C}, as discussed above), or for lensed objects (like RCS0224z5), observations of \MgII\ would be feasible in deep spectroscopic surveys.

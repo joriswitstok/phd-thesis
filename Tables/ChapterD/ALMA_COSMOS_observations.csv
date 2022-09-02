@@ -1,0 +1,6 @@
+field|object|z|emline|MS|freq|chanwidth|int|ant|lbl|res|beamsize|RMS|sens|codes
+COSMOS|\setulcolor{COS2987}\ul{COS-2987030247}|6.8076|{[\ion{C}{II}]} 158 $\upmu\mathrm{m}$|5|243.429|40|3.6|45|1397.8|0.182|Natural ($0.4 \arcsec$): $0.7 \arcsec \times 0.6 \arcsec$\newline Natural: $0.4 \arcsec \times 0.4 \arcsec$|\newline 76.3|89.5|2015.1.01111.S, 2018.1.01359.S
+|||{[\ion{O}{III}]} 88 $\upmu\mathrm{m}$|2|434.575|70|1.1|48|360.6|0.395|Briggs ($0.5$): $0.7 \arcsec \times 0.5 \arcsec$\newline Natural: $0.8 \arcsec \times 0.6 \arcsec$|\newline 487|548|2018.1.00429.S
+|||{[\ion{N}{II}]} 205 $\upmu\mathrm{m}$|2|186.996|30|1.3|46|783.5|0.422|Natural: $0.8 \arcsec \times 0.7 \arcsec$|166|202|2018.1.01551.S
+COSMOS|\setulcolor{COS3018}\ul{COS-3018555981}|6.8540|{[\ion{C}{II}]} 158 $\upmu\mathrm{m}$|17|241.991|40|14|44|1397.8|0.183|Natural ($0.4 \arcsec$): $0.6 \arcsec \times 0.6 \arcsec$\newline Natural: $0.4 \arcsec \times 0.4 \arcsec$|\newline 45.0|48.7|2015.1.01111.S, 2017.1.00604.S
+|||{[\ion{O}{III}]} 88 $\upmu\mathrm{m}$|2|432.008|70|0.99|47|360.6|0.397|Briggs ($0.5$): $0.7 \arcsec \times 0.5 \arcsec$\newline Natural: $0.9 \arcsec \times 0.6 \arcsec$|\newline 429|456|2018.1.00429.S

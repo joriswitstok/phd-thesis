@@ -1,0 +1,8 @@
+eline,wl,dv,dverr,uplim,flux,fluxerr,EW,EWerr,FWHM,FWHMerr
+\lya,1215.67,156,52,False,440.4,5.9,143.3,12.9,207,6
+\CIV,1548.19,104,53,False,12.7,3.1,11.9,3.2,171,30
+\CIV,1550.77,104,53,False,6.18,3.48,5.78,3.34,171,30
+\HeII,1640.42,nan,nan,True,6.11,nan,6.21,nan,nan,nan
+\CIIIf,1906.68,nan,nan,True,26.7,nan,35.2,nan,nan,nan
+\CIIIs,1908.73,nan,nan,True,46.0\,^f,nan,25.4\,^f,nan,nan,nan
+\MgII,2796.35,52,54,False,5.00,1.49,16.2,5.1,87,46

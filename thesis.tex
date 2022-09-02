@@ -2,20 +2,19 @@
 % Please have a look at the README.md file for info on how to use the template
 
 % Drafts
-%\documentclass[a4paper, 12pt, twoside, draft, index, PageStyleII, customfont, custombib]{PhDThesisPSnPDF}
-%\documentclass[a4paper, 11pt, oneside, draft, chapter, nolineno, index, PageStyleII, customfont, custombib]{PhDThesisPSnPDF}
-%\documentclass[a4paper, 11pt, twoside, print, draft, nolineno, custommargin, index, PageStyleII, customfont, custombib]{PhDThesisPSnPDF}
+%\documentclass[a4paper, 11pt, twoside, draft, chapter, nolineno, index, PageStyleII, times, custombib]{PhDThesisPSnPDF}
+%\documentclass[a4paper, 11pt, twoside, print, draft, nolineno, index, PageStyleII, times, custombib]{PhDThesisPSnPDF}
 
 % Online version
-\documentclass[a4paper, 11pt, twoside, index, PageStyleII, customfont, custombib]{PhDThesisPSnPDF}
+\documentclass[a4paper, 11pt, twoside, index, PageStyleII, times, custombib]{PhDThesisPSnPDF}
 
 % Print version
-%\documentclass[a4paper, 11pt, twoside, print, index, PageStyleII, customfont, custombib]{PhDThesisPSnPDF}
+%\documentclass[a4paper, 11pt, twoside, print, index, PageStyleII, times, custombib]{PhDThesisPSnPDF}
 % custommargin only works with non-default pagestyle if included here, not via \pagestyle!
 
 % Declaration/abstract only
-%\documentclass[a4paper, 11pt, print, declaration, customfont]{PhDThesisPSnPDF}
-%\documentclass[a4paper, 11pt, print, abstract, customfont]{PhDThesisPSnPDF}
+%\documentclass[a4paper, 11pt, print, declaration, times]{PhDThesisPSnPDF}
+%\documentclass[a4paper, 11pt, print, abstract, times]{PhDThesisPSnPDF}
 
 % ******************************************************************************
 % ******************************* Class Options ********************************
@@ -117,8 +116,8 @@
 % the document class.
 
 \ifdefineAbstract
- \pagestyle{empty}
- \includeonly{Declaration/declaration, Abstract/abstract}
+    \pagestyle{empty}
+    \includeonly{Declaration/declaration, Abstract/abstract}
 \fi
 
 % ***************************** Chapter Mode ***********************************
@@ -128,9 +127,11 @@
 % To use choose `chapter' option in the document class
 
 \ifdefineChapter
-	%\includeonly{Abstract/abstract}
-	\includeonly{Chapter1/chapter1}
-	%\includeonly{Chapter1/chapter1, Chapter2/chapter2, Chapter3/chapter3}
+%	\includeonly{Abstract/abstract}
+%	\includeonly{ChapterI/chapterI}
+%	\includeonly{ChapterP/chapterP}
+%    \includeonly{ChapterD/chapterD}
+	\includeonly{ChapterI/chapterI, ChapterP/chapterP, ChapterA/chapterA, ChapterD/chapterD, ChapterC/chapterC}
 \fi
 
 % ******************************** Front Matter ********************************
@@ -140,10 +141,17 @@
 
 \maketitle
 
-\include{Dedication/dedication}
-\include{Declaration/declaration}
-\include{Acknowledgement/acknowledgement}
-\include{Abstract/abstract}
+\bibpunct[]{(}{)}{;}{a}{}{,}
+
+\defcitealias{1981PASP...93....5B}{BPT}
+\defcitealias{2019A&ARv..27....3M}{MM19}
+\defcitealias{2012ApJ...746..125H}{HM12}
+\defcitealias{2019MNRAS.485...47P}{P19}
+
+%\include{Dedication/dedication}
+%\include{Declaration/declaration}
+%\include{Acknowledgement/acknowledgement}
+%\include{Abstract/abstract}
 
 % *********************** Adding TOC and List of Figures ***********************
 
@@ -156,7 +164,7 @@
 % To use nomenclature, see README.md: run Tools > User > makenomenclature
 
 % \printnomenclature[space] % space can be set as 2em between symbol and description
-%\printnomenclature[3em]
+\printnomenclature[15em]
 
 %\printnomenclature
 
@@ -167,14 +175,11 @@
 
 \include{Abstract/abstract}
 
-\include{Chapter0/chapter0}
-\include{Chapter1/chapter1}
-\include{Chapter2/chapter2}
-%\include{Chapter3/chapter3}
-%\include{Chapter4/chapter4}
-%\include{Chapter5/chapter5}
-%\include{Chapter6/chapter6}
-%\include{Chapter7/chapter7}
+\include{ChapterI/chapterI}
+\include{ChapterP/chapterP}
+\include{ChapterA/chapterA}
+\include{ChapterD/chapterD}
+\include{ChapterC/chapterC}
 
 %\include{Acknowledgement/acknowledgement}
 
@@ -185,7 +190,7 @@
 %\backmatter
 
 % ********************************** Bibliography ******************************
-\begin{spacing}{0.5}
+%\begin{spacing}{0.5}
 
 % To use the conventional natbib style referencing
 % Bibliography style previews: http://nodonn.tipido.net/bibstyle.php
@@ -206,18 +211,18 @@
 %\printbibliography[heading=bibintoc, title={References}]
 
 
-\end{spacing}
+%\end{spacing}
 
 % ********************************** Appendices ********************************
 
 \begin{appendices} % Using appendices environment for more functionality
 	% Use input if you want "Appendices" in TOC (option 'toc' for package appendix)
-	\include{Appendix1/appendix1}
-	\include{Appendix2/appendix2}
-
+	\include{AppendixP/appendixP}
+	\include{AppendixA/appendixA}
+    \include{AppendixD/appendixD}
 \end{appendices}
 
 % *************************************** Index ********************************
-\printthesisindex % If index is present
+%\printthesisindex % If index is present
 
 \end{document}
