@@ -12,12 +12,12 @@
         opacity=1,
         placement=top,
         angle=0,
-        contents={\includegraphics[width=\paperwidth]{Images/SMACS1}}
+        contents={\includegraphics[width=\paperwidth]{Images/HST1}}
     }
     \BgThispage
     
-    \fancyfoot[C]{\color{white}\thepage}
-    \fancyfoot[L]{\vspace{3.5ex}\tiny\textcolor{white}{Credit: NASA, ESA, CSA, STScI}}
+    \fancyfoot[C]{\color{black}\thepage}
+    \fancyfoot[L]{\vspace{3.5ex}\tiny\textcolor{black}{Credit: NASA}}
     \clearpage
     \newpage
     
@@ -25,11 +25,19 @@
 \fi
 
 \chapter[Assessing the sources of reionisation]{Assessing the sources of reionisation \\[2ex]\large{A spectroscopic case study of a 30\texorpdfstring{$\times$}{x} lensed galaxy\\[-1ex]at \texorpdfstring{$z \sim 5$}{z~5} with \texorpdfstring{\lya, \CIV, \MgII, and \NeIII}{\lyatext, CIV, MgII, and [NeIII]}}}
-\label{ch:Assessing the sources of reionisation}
+\label{ch:Assessing_the_sources_of_reionisation}
 
 \ifsetDraft
 \else
     \renewcommand{\CurrentTitleColor}{\color{black}}
+    
+%    \vspace*{\fill}
+%    \setlength{\epigraphwidth}{0.6\textwidth}
+%    \epigraph{\textit{Casus ubique valet: semper tibi pendeat hamus;\\quo minime credas gurgite, piscis erit.}
+%        \\
+%        \vspace{2ex}
+%        \textit{Chance reigns everywhere: always cast your bait;\\in what you believe the least likely pond, a fish will be.}}{--- Ovid, Ars Amatoria}
+%    \vspace*{\fill}
     
     \backgroundsetup{
         scale=1,
@@ -37,25 +45,32 @@
         opacity=1,
         placement=top,
         angle=0,
-        contents={\includegraphics[width=\paperwidth]{Images/SMACS2}}
+        contents={\includegraphics[width=\paperwidth]{Images/HST2}}
     }
     \BgThispage
     
     \fancyhf{}
-    \fancyfoot[C]{\color{white}\thepage}
+    \fancyfoot[C]{\color{black}\thepage}
     \newpage
     \setFancyHdr
 \fi
 
+\vspace*{\fill}
+
+\noindent In this chapter, we present a detailed spectroscopic analysis of a galaxy at $z \simeq 4.88$ that is, by chance, magnified $\ssim 30\times$ by gravitational lensing. Only three sources at $z \gtrsim 5$ are known with such high magnification. This particular source has been shown to exhibit widespread, high equivalent width $\CIV \, \lambda \, 1549 \, \Angstrom$ emission, implying it is a unique example of a metal-poor galaxy with a hard radiation field, likely representing the galaxy population responsible for cosmic reionisation. Using UV nebular line ratio diagnostics, VLT/X-shooter observations rule out strong AGN activity, indicating a stellar origin of the hard radiation field instead. We present a new detection of $\NeIII \, \lambda \, 3870 \, \Angstrom$ and use the \NeIII/\OII\ line ratio to constrain the ionisation parameter and gas-phase metallicity. Closely related to the commonly used \OIIIf/\OII\ ratio, our \NeIII/\OII\ measurement shows this source is similar to local ``Green Pea'' galaxies and LyC leakers. It furthermore suggests this galaxy is more metal poor than expected from the Fundamental Metallicity Relation, possibly as a consequence of excess gas accretion diluting the metallicity. Finally, we present the highest redshift detection of $\MgII \, \lambda \, 2796 \, \Angstrom$, observed at high equivalent width in emission, in contrast to more evolved systems predominantly exhibiting \MgII\ absorption. Strong \MgII\ emission has been observed in most $z \sim 0$ LyC leakers known and has recently been proposed as an indirect tracer of escaping ionising radiation. In conclusion, this strongly lensed galaxy, observed just $300 \, \mathrm{Myr}$ after reionisation ends, enables testing of observational diagnostics proposed to constrain the physical properties of distant galaxies in the \textit{JWST}/ELT era.
+
+\vspace{3ex}
+\begin{mdframed}[backgroundcolor=black!2.5]
+    \textsl{This chapter is based on work carried out in collaboration with Renske Smit, Roberto Maiolino, Mirko Curti, Nicolas Laporte, Richard Massey, Johan Richard, and Mark Swinbank. It appeared in MNRAS as \citet*{2021MNRAS.508.1686W}.}
+\end{mdframed}
+\vspace*{\fill}
+
+\newpage
+
 \section{Introduction}
 \label{chAsec:Introduction}
 
-\lettrine{S}{pace-based observatories} such as \textit{HST} and \textit{Spitzer} and ground-based $8 \, \mathrm{m}$-class telescopes have transformed our view of galaxy evolution in the high-redshift Universe, identifying statistically substantial samples of distant galaxies in deep imaging surveys beyond $z>4$ \citep{2014ARA&A..52..415M}. At this epoch, covering the first $\ssim 10\%$ of the current age of the Universe, the physical properties of galaxies were likely to be very different to those today, with metal-poor stellar populations, low stellar masses, and hard radiation fields. These conditions are favourable to strong nebular emission, despite the weak stellar continuum \citep[e.g.][]{2016ARA&A..54..761S}. Equally, this suggests the faint galaxy population in the EoR can contribute significantly to reionisation \citep[e.g.][]{2015ApJ...803...34B}.
-\begin{wrapfigure}[12]{R}{0.4\linewidth}
-    \begin{mdframed}[backgroundcolor=black!2.5]
-        \textsl{This chapter is based on work carried out in collaboration with Renske Smit, Roberto Maiolino, Mirko Curti, Nicolas Laporte, Richard Massey, Johan Richard, and Mark Swinbank. It appeared in MNRAS as \citet*{2021MNRAS.508.1686W}.}
-    \end{mdframed}
-\end{wrapfigure}
+\lettrine{S}{pace-based observatories} such as \textit{HST} and \textit{Spitzer} and ground-based $8 \, \mathrm{m}$ class telescopes have transformed our view of galaxy evolution in the high-redshift Universe, identifying statistically substantial samples of distant galaxies in deep imaging surveys beyond $z>4$ \citep{2014ARA&A..52..415M}. At this epoch, covering the first $\ssim 10\%$ of the current age of the Universe, the physical properties of galaxies were likely to be very different to those today, with metal-poor stellar populations, low stellar masses, and hard radiation fields. These conditions are favourable to strong nebular emission, despite the weak stellar continuum \citep[e.g.][]{2016ARA&A..54..761S}. Equally, this suggests the faint galaxy population in the EoR can contribute significantly to reionisation \citep[e.g.][]{2015ApJ...803...34B}.
 
 This picture has mainly emerged from spectroscopic follow-up observations of individual distant sources selected in deep photometric surveys, although this poses several challenges. From the ground, NIR spectrometers are restricted by Earth's atmosphere to observe key rest-frame optical emission line features, such as \Halpha, $\OIIIf \, \lambda \, 5008 \, \Angstrom$, and $\OII \, \lambda \, 3727, 3730 \, \Angstrom$ (simply \OII\ hereafter) out to redshifts of about $2.5, 3.6$, and $5.2$, respectively (cf. \cref{chIssec:Observing_galaxies_across_cosmic_time}). The much-anticipated \textit{JWST} will explore the rest-frame optical spectra of more distant objects ($z \sim 4$-$12$), which will enable the use of many emission line diagnostics that are carefully calibrated with the wealth of data for more nearby galaxies, like the optical classification schemes that distinguish spectra of star-forming galaxies shaped by nebular emission from \HII\ regions from those dominated by emission of the narrow-line region of AGN (\cref{chIssec:Nebular_emission_and_emission-line_diagnostics}; see also \citetalias{1981PASP...93....5B}; \citealt{1987ApJS...63..295V}).
 

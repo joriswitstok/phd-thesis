@@ -23,10 +23,13 @@
 \fi
 
 \chapter[Dual constraints with ALMA]{Dual constraints with ALMA \\[2ex]\large{New \texorpdfstring{\OIIILam}{[O III] 88 μm} and dust-continuum observations reveal\\[-1ex]the ISM conditions of luminous LBGs at \texorpdfstring{$z \sim 7$}{z ∼ 7}}}
-\label{ch:Dual constraints with ALMA}
+\label{ch:Dual_constraints_with_ALMA}
 
 \ifsetDraft
 \else
+%    \setlength{\epigraphwidth}{0.85\textwidth}
+%    \epigraph{\textit{We can only see a short distance ahead, but we can see plenty there that needs to be done.}}{--- Alan Turing, Computing Machinery and Intelligence (1950)}
+    
     \backgroundsetup{
         scale=1,
         color=black,
@@ -43,16 +46,23 @@
     \setFancyHdr
 \fi
 
+\vspace*{\fill}
+
+\noindent In this chapter, we present new \OIIILam\ observations of five bright $z \sim 7$ Lyman-break galaxies spectroscopically confirmed by ALMA through \CIILam, unlike recent \OIIIf\ detections where \lya\ was used. This nearly doubles the sample of Epoch of Reionisation galaxies with robust ($5 \sigma$) \CII\ and \OIIIf\ detections. We perform a multi-wavelength comparison with new deep \textit{HST} images of the rest-frame UV, whose compact morphology aligns well with \OIIIf\ tracing ionised gas. By contrast, we find more spatially extended \CII\ emission likely produced in neutral gas, as indicated by a \NIILam\ non-detection in one source. We find a correlation between the equivalent width of the optical \OIIIf\ and \Hbeta\ lines and \OIIIf/\CII, as seen in local metal-poor dwarf galaxies. \program{Cloudy} models of a nebula of typical density harbouring a young stellar population with a high ionisation parameter adequately reproduce the observed lines. Surprisingly, however, our models fail to reproduce the strength of \OIIILam, unless we assume an $\mathrm{\upalpha/Fe}$ enhancement and near-solar nebular oxygen abundance. On spatially resolved scales, we find \OIIIf/\CII\ shows a tentative anti-correlation with infrared excess, $L_\text{IR}/L_\text{UV}$, also seen on global scales in the local Universe. Finally, we introduce the far-infrared spectral energy distribution fitting code \program{mercurius} to show that dust-continuum measurements of one source appear to favour a low dust temperature and correspondingly high dust mass. This implies a high stellar metallicity yield and may point towards the need of dust production or grain-growth mechanisms beyond supernovae.
+
+\vspace{3ex}
+\begin{mdframed}[backgroundcolor=black!2.5]
+    \textsl{This chapter is based on work carried out in collaboration with Renske Smit, Roberto Maiolino, Nimisha Kumari, Manuel Aravena, Leindert Boogaard, Rychard Bouwens, Stefano Carniani, Gareth C. Jones, Mauro Stefanon, Paul van der Werf, and Sander Schouws. It appeared in MNRAS as \citet{2022MNRAS.515.1751W}.}
+\end{mdframed}
+\vspace*{\fill}
+
+\newpage
+
 \section{Introduction}
 \label{chDsec:Introduction}
 
 \lettrine{T}{he epoch of reionisation} marks a critical turning point in the early Universe and its study is one of the frontiers in modern astrophysics. During the EoR, the first galaxies emerged and started to rapidly form stars, which in turn began to ionise the surrounding gas -- first the interstellar medium, and eventually the IGM \citep{2018PhR...780....1D, 2021arXiv211013160R}. Compared to their present-day counterparts, these galaxies have not had much time to build up an abundance of metals \citepalias[e.g.][]{2019A&ARv..27....3M}. This suggests they have metal-poor stellar populations, which results in an enhanced output of UV photons due to the hardened spectra of O- and B-type stars, in addition to containing a reduced amount of dust, implying these early galaxies generally experience less absorption of UV radiation \citep{2016ARA&A..54..761S}.
 
-\begin{wrapfigure}{R}{0.4\linewidth}
-    \begin{mdframed}[backgroundcolor=black!2.5]
-        \textsl{This chapter is based on work carried out in collaboration with Renske Smit, Roberto Maiolino, Nimisha Kumari, Manuel Aravena, Leindert Boogaard, Rychard Bouwens, Stefano Carniani, Gareth C. Jones, Mauro Stefanon, Paul van der Werf, and Sander Schouws. It appeared in MNRAS as \citet{2022MNRAS.515.1751W}.}
-    \end{mdframed}
-\end{wrapfigure}
 Regions where star formation takes place, especially in the very early Universe, therefore harbour stellar radiation fields with a strong intrinsic flux of ionising UV photons. Deep broadband surveys in the optical and IR by \textit{HST} have indeed proven an effective method of finding star-forming EoR galaxies via their rest-frame UV emission, having identified a considerable number through the Lyman-break technique \citep[currently nearly \num{2000} candidates at $z \geq 6$; see e.g.][]{2021AJ....162...47B}.
 
 Even at the earliest stages of galaxy evolution, however, dust can be of major influence. Dust grains not only catalyse star formation through the formation of molecules \citep{2018MNRAS.474.1545C} and fragmentation of gas \citep{2006MNRAS.369.1437S}, but they also obscure our view of these UV-bright star-forming regions. Dust is able to absorb a significant proportion of stellar optical and UV light, re-emitting the absorbed energy as thermal IR radiation. It therefore poses observational challenges to the inference of SFRs solely from UV and optical measurements \citep{2012ARA&A..50..531K, 2014ARA&A..52..415M, 2020ApJ...902..112B}. Indeed, recent work renewed attention on an existing notion \citep{2020RSOS....700556H}: that a non-trivial fraction of high-redshift galaxies ($z \gtrsim 4$) may be so-called ``\textit{HST}-dark'' systems which, even in the deepest \textit{HST} imaging (reaching $H \sim 27 \, \mathrm{mag}$), appear completely obscured at observed optical and NIR wavelengths \citep{2018A&A...620A.152F, 2019ApJ...884..154W, 2019Natur.572..211W, 2021Natur.597..489F, 2021ApJ...923..215C, 2022ApJ...925...23M}. But while dust complicates the interpretation in the rest-frame UV and optical, its thermal emission also serves as a probe of the mass of the ISM \citep[e.g.][]{2017ApJ...837..150S}.
@@ -526,7 +536,7 @@ Perhaps most remarkable is the fact that -- even with lower gas densities -- the
     \label{chDfig:High-resolution_OIII_maps}
 \end{figure}
 
-Interestingly, a metallicity calibration employing the \OIIILam\ line suggested by \citet{2020ApJ...903..150J} indeed predicts relatively high metallicities given the \OIIILam\ luminosities of the $z \sim 7$ galaxies; remarkably, this yields a super-solar value of $12 + \log \left ( \text{O/H} \right) \simeq 8.72$ for COS-3018555981 (solar abundance being $12 + \log \left ( \text{O/H} \right)_\odot = 8.69$; \citealt{2009ARA&A..47..481A}), as has been reported (albeit for higher-mass systems) in a number of recent works \citep[, and references therein]{2022ApJ...928..179L}. Yet such ($\upalpha$-element) abundances are exceptionally high compared to what may be expected for young star-forming galaxies less than a billion years after the Big Bang. Even when assuming there is no evolution in the mass-metallicity relation (MZR) beyond a redshift of $z \sim 3$ (while evidence of an underlying evolution up to $z \sim 5$ is already emerging; see \cref{ch:Assessing the sources of reionisation}), a solar metallicity poses a significant offset (around $0.5 \, \mathrm{dex}$ or a factor of $\ssim 3$) from the predicted metallicity of a galaxy with $M_* \sim 10^9 \, \mathrm{M_\odot}$ \citep{2021ApJ...914...19S}.
+Interestingly, a metallicity calibration employing the \OIIILam\ line suggested by \citet{2020ApJ...903..150J} indeed predicts relatively high metallicities given the \OIIILam\ luminosities of the $z \sim 7$ galaxies; remarkably, this yields a super-solar value of $12 + \log \left ( \text{O/H} \right) \simeq 8.72$ for COS-3018555981 (solar abundance being $12 + \log \left ( \text{O/H} \right)_\odot = 8.69$; \citealt{2009ARA&A..47..481A}), as has been reported (albeit for higher-mass systems) in a number of recent works \citep[, and references therein]{2022ApJ...928..179L}. Yet such ($\upalpha$-element) abundances are exceptionally high compared to what may be expected for young star-forming galaxies less than a billion years after the Big Bang. Even when assuming there is no evolution in the mass-metallicity relation (MZR) beyond a redshift of $z \sim 3$ (while evidence of an underlying evolution up to $z \sim 5$ is already emerging; see \cref{ch:Assessing_the_sources_of_reionisation}), a solar metallicity poses a significant offset (around $0.5 \, \mathrm{dex}$ or a factor of $\ssim 3$) from the predicted metallicity of a galaxy with $M_* \sim 10^9 \, \mathrm{M_\odot}$ \citep{2021ApJ...914...19S}.
 
 Relatively high \OIIILam\ luminosities have previously been observed in local metal-poor galaxies, as noted by for example \citet{2012A&A...548A..91L} in the case of the Large Magellanic Cloud (LMC) and \citet{2015A&A...578A..53C, 2019A&A...626A..23C} for the DGS galaxies. The models of \citet{2012A&A...548A..91L} point towards the need of a relatively cool ($T < \num{10000} \, \mathrm{K}$) ionised gas, consistent with our metal-rich models that have more efficient cooling: for solar metallicity, for instance, $T \sim \num{8000} \, \mathrm{K}$ in the \HII\ region, as opposed to $T \gtrsim \num{10000} \, \mathrm{K}$ for $Z < Z_\odot$. On the contrary, the metal-poor dwarf galaxies from the DGS have directly observed nebular metallicities of $Z_\text{neb} \lesssim 0.3 \, \mathrm{Z_\odot}$, which are instead coupled with high temperatures, $\num{15000} \, \mathrm{K} \lesssim T \lesssim \num{20000} \, \mathrm{K}$ \citep[e.g.][]{1990Natur.343..238I, 1997ApJS..108....1I, 1998ApJ...500..188I, 2000ApJ...531..776G}, as would be expected given the principal role of heavy elements as a cooling agent. This indicates that photoionisation models seem to be missing a key ingredient to replicate the strength of the \OIIILam\ line.
 

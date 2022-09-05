@@ -16,20 +16,25 @@
     }
     \BgThispage
     
-    \fancyfoot[C]{\color{lightgray}\thepage}
-    \fancyfoot[L]{\vspace{3.5ex}\tiny\textcolor{lightgray}{Credit: ESO, P. Hor\'{a}lek}}
+    \fancyfoot[C]{\color{white}\thepage}
+    \fancyfoot[L]{\vspace{3.5ex}\tiny\textcolor{white}{Credit: ESO, P. Hor\'{a}lek}}
     \clearpage
     \newpage
 
-    \renewcommand{\CurrentTitleColor}{\color{lightgray}}
+    \renewcommand{\CurrentTitleColor}{\color{white}}
 \fi
 
 \chapter{Prospects for observing the low-density cosmic web in \texorpdfstring{\lymana}{\lymanatext} emission}
-\label{ch:Prospects for observing the low-density cosmic web in Lya emission}
+\label{ch:Prospects_for_observing_the_low-density_cosmic_web_in_Lya_emission}
 
 \ifsetDraft
 \else
     \renewcommand{\CurrentTitleColor}{\color{black}}
+    
+%    \vspace*{\fill}
+%    \setlength{\epigraphwidth}{0.85\textwidth}
+%    {\color{white} \epigraph{\textit{We can only see a short distance ahead, but we can see plenty there that needs to be done.}}{--- Alan Turing, Computing Machinery and Intelligence (1950)}}
+%    \vspace*{\fill}
     
     \backgroundsetup{
         scale=1,
@@ -42,7 +47,7 @@
     \BgThispage
     
     \fancyhf{}
-    \fancyfoot[C]{\color{lightgray}\thepage}
+    \fancyfoot[C]{\color{white}\thepage}
     \newpage
     \setFancyHdr
 \fi
@@ -51,18 +56,22 @@
 %\renewcommand\thefigure{\thechapter.\arabic{figure}}
 %\setcounter{figure}{0}
 
-%\setlength{\epigraphwidth}{0.8\textwidth}
-%\epigraph{\textit{We are just an advanced breed of monkeys on a minor planet of a very average star. But we can understand the Universe. That makes us something very special.}}{Stephen Hawking}
+\vspace*{\fill}
+
+\noindent Mapping the IGM in \lya\ emission would yield unprecedented tomographic information on the large-scale distribution of baryons and potentially provide new constraints on the UV background and various feedback processes relevant to galaxy formation. In this chapter, we use a cosmological hydrodynamical simulation to examine the \lya\ emission of the IGM resulting from collisional excitations and recombinations in the presence of a UV background. We focus on gas in large-scale-structure filaments in which \lya\ radiative transfer effects are expected to be moderate. At low density the emission is primarily due to fluorescent re-emission of the ionising UV background as a result of recombinations, while collisional excitations dominate at higher densities. We discuss prospects of current and future observational facilities to detect this emission and find that the emission of filaments of the cosmic web are typically dominated by the halos and galaxies embedded in these filaments, rather than by the lower-density filament gas outside halos. Detecting filament gas directly would require a very long exposure with a MUSE-like instrument on the ELT. Our most robust predictions that act as lower limits indicate this would be slightly less challenging at lower redshifts ($z \lesssim 4$). We also find that there is a large amount of variance between fields in our mock observations. High-redshift protoclusters appear to be the most promising environment to observe the filamentary IGM in \lymana\ emission.
+
+\vspace{3ex}
+\begin{mdframed}[backgroundcolor=black!2.5]
+    \textsl{This chapter is based on work carried out in collaboration with Ewald Puchwein, Girish Kulkarni, Martin Haehnelt, Renske Smit, and Lewis Weinberger. It appeared in Astronomy \& Astrophysics as \citet*{2021A&A...650A..98W}.}
+\end{mdframed}
+\vspace*{\fill}
+
+\newpage
 
 \section{Introduction}
 \label{chPsec:Introduction}
 
 \lettrine{A}{s the reservoir} of the majority of baryons in the Universe, the IGM presents an invaluable means to understanding the evolution of cosmic structure \citep{2009RvMP...81.1405M}. The IGM has been detected in absorption at a wide range of overdensities out to redshift $z \sim 6$ using \ion{H}{I} \lya\ (see \cref{chIsssec:Photoionisation_by_stars}) absorption lines in the spectra of background quasars (\cref{chIsssec:Cosmic_Reionisation}). Successively larger numbers of quasars have been targeted for this purpose, resulting in a large data set of \lya\ absorption measurements of the IGM. Before reionisation is completed, understanding the physical state of the IGM is complicated by the rather uncertain details of the emergence of the first stars, black holes, and galaxies during the epoch of reionisation, but the post-reionisation ($z \lesssim 5.5$) IGM should be well described by cosmological hydrodynamical simulations \citep{1994ApJ...437L...9C, 1996ApJ...457L..51H, 1999elss.conf..346W, 2017ApJ...837..106O, 2019MNRAS.486.4075O, 2015MNRAS.446.3697L, 2017MNRAS.464..897B}. In these simulations, the observed properties of the IGM are reproduced by a fluctuating gas density distribution tracing the cosmic structure formation process. The gas is thereby in ionisation equilibrium with a uniform UVB created by galaxies and AGN. This has led to constraints on the ionisation and thermal state of the IGM out to $z \sim 6$ \citep{1997ApJ...489....7R, 1999ApJ...511..521D, 2000MNRAS.318..817S, 2003MNRAS.342.1205M, 2008ApJ...688...85F, 2011MNRAS.410.1096B, 2012MNRAS.419.2880B, 2013MNRAS.436.1023B, 2017PhLB..773..258G, 2019ApJ...872...13W, 2019MNRAS.486..769K} derived from \lya\ absorption observations.
-\begin{wrapfigure}[12]{R}{0.4\linewidth}
-    \begin{mdframed}[backgroundcolor=black!2.5]
-        \textsl{This chapter is based on work carried out in collaboration with Ewald Puchwein, Girish Kulkarni, Martin Haehnelt, Renske Smit, and Lewis Weinberger. It appeared in Astronomy \& Astrophysics as \citet*{2021A&A...650A..98W}.}
-    \end{mdframed}
-\end{wrapfigure}
 
 In contrast, \lya\ emission from the IGM has received relatively little attention, despite a history of just over half a century of theoretically predicted prospects \citep{1967ApJ...147..868P, 1987MNRAS.225P...1H, 1996ApJ...468..462G, 2001ApJ...562..605F, 2003ApJ...599L...1F, 2005ApJ...622....7F, 2005ApJ...628...61C, 2010ApJ...708.1048K, 2010ApJ...725..633F, 2012MNRAS.423..344R, 2013ApJ...763..132S, 2016MNRAS.462.1961S, 2017ApJ...848...52H, 2019MNRAS.489.2417A, 2020MNRAS.494.5439E}. Observing intergalactic \lya\ emission instead of absorption has distinct advantages. First, unlike absorption \lya\ emission is directly sensitive to the recombination and collisional physics of the neutral as well as the ionised hydrogen content of the IGM and the CGM that feeds the formation and evolution of galaxies. Second, observations of the \lya\ emission allow us to homogeneously probe three-dimensional volumes. Although three-dimensional \lya-forest studies have now become possible owing to the high number density of observed bright quasars \citep[see e.g.][]{2014MNRAS.440.2599C}, the number of such quasars drops rapidly towards high redshifts \citep{2019MNRAS.488.1035K}. Third, observations of \lya\ emission can potentially provide independent constraints on the IGM temperature and photoionisation rate, particularly at densities higher than those probed by the \lya\ forest ($\Delta \gtrsim 10$).
 

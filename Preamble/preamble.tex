@@ -95,8 +95,8 @@
 \newcommand{\OII}{{[\ion{O}{II}]}}
 \newcommand{\NeIII}{{[\ion{Ne}{III}]}}
 
-\newcommand{\Halpha}{{H\ensuremath{\upalpha}}}
-\newcommand{\Hbeta}{{H\ensuremath{\upbeta}}}
+\newcommand{\Halpha}{{\ensuremath{\mathrm{H\upalpha}}}}
+\newcommand{\Hbeta}{{\ensuremath{\mathrm{H\upbeta}}}}
 \newcommand{\NII}{{[\ion{N}{II}]}}
 \newcommand{\SII}{{[\ion{S}{II}]}}
 \newcommand{\OI}{{[\ion{O}{I}]}}
@@ -132,12 +132,12 @@
 \usepackage{titlesec}
 \newcommand{\PreContentTitleFormat}{\titleformat{\chapter}[display]{\CurrentTitleColor\scshape\huge}
 	{\CurrentTitleColor\Large\filleft{\chaptertitlename} \Huge\thechapter}
-	{2ex}{}
+	{0ex}{}
 %	[\vspace{1ex}\titlerule]
 }
 \newcommand{\ContentTitleFormat}{\titleformat{\chapter}[display]{\CurrentTitleColor\scshape\huge}
-	{\CurrentTitleColor\Large\filleft{\chaptertitlename} \Huge\thechapter}{2ex}
-	{\titlerule\vspace{1ex}\filright}
+	{\CurrentTitleColor\Large\filleft{\chaptertitlename} \Huge\thechapter}
+    {0ex}{\titlerule\vspace{1ex}\filright}
 %	[\vspace{1ex}\titlerule]
 }
 \newcommand{\PostContentTitleFormat}{\PreContentTitleFormat}
