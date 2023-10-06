@@ -82,6 +82,11 @@
 \newcommand{\lya}{{Ly\ensuremath{\upalpha}}}
 \newcommand{\lyatext}{Lyα}
 
+\newcommand{\Angstrom}{\text{\AA}}
+
+\newcommand{\arcsec}{\hbox{$^{\prime\prime}$}}
+\newcommand{\ion}[2]{\textup{#1\,\textsc{\lowercase{#2}}}}
+
 \newcommand{\HII}{{\ion{H}{II}}}
 \newcommand{\CIV}{{\ion{C}{IV}}}
 \newcommand{\HeII}{{\ion{He}{II}}}
@@ -104,11 +109,6 @@
 \newcommand{\CIILam}{{\CII\ 158 $\upmu\mathrm{{m}}$}}
 \newcommand{\OIIILam}{{\OIIIf\ 88 $\upmu\mathrm{{m}}$}}
 \newcommand{\NIILam}{{\NII\ 205 $\upmu\mathrm{{m}}$}}
-
-\newcommand{\Angstrom}{\text{\AA}}
-
-\newcommand{\arcsec}{\hbox{$^{\prime\prime}$}}
-\newcommand{\ion}[2]{\textup{#1\,\textsc{\lowercase{#2}}}}
 
 \usepackage{commath}
 \usepackage{upgreek}
@@ -206,6 +206,11 @@
 %\widowpenalty=500
 
 %\usepackage[perpage]{footmisc} %Range of footnote options
+\usepackage{fnpct}
+\usepackage{scrextend}
+
+\deffootnote{2em}{1em}{\thefootnotemark\hspace{1em}}
+\renewcommand*\thempfootnote{\arabic{mpfootnote}}
 
 % ******************************* Joris' edit **********************************
 % (Custom: footnotes in tables)
@@ -223,11 +228,17 @@
 \let\VANthebibliography\thebibliography
 \def\thebibliography{\DeclareRobustCommand{\VAN}[3]{##3}\VANthebibliography}
 
-%\usepackage{cleveref} %Referencing without need to explicitly state fig /table
+%\usepackage{cleveref} %Referencing without need to explicitly state fig/table
 \usepackage[capitalise]{cleveref} %noabbrev
 \crefname{figure}{Figure}{Figures}
 %\crefname{section}{Sect.}{Sects.}
 \crefname{equation}{equation}{equations}
+
+% Ensure appendices are referred to as Appendix A, B, etc.
+\usepackage{xpatch}
+\xapptocmd\appendices{%
+    \crefalias{chapter}{appendix}%
+}{}{\PatchFailed}
 
 % Add `custombib' in the document class option to use this section
 \ifuseCustomBib
